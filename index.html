@@ -1,0 +1,14 @@
+---
+layout: default
+title: Willkommen
+---
+<div class="welcome">
+  <h2>Willkommen</h2>
+  <p>Wähle links ein Thema aus, oder starte mit einem der neuesten Einträge:</p>
+  <ul class="recent">
+    {% assign recent = site.beitraege | sort: "date" | reverse | limit: 5 %}
+    {% for p in recent %}
+      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a> <span class="recent-date">&mdash; {{ p.date | date: "%-d.%-m.%Y" }}</span></li>
+    {% endfor %}
+  </ul>
+</div>

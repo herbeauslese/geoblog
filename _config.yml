@@ -1,0 +1,28 @@
+title: Geo-Blog
+description: "Notizen auf dem Weg zum Geographie-Studium — von den Basics bis zu komplexeren Themen."
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+collections:
+  beitraege:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "beitraege"
+    values:
+      layout: "beitrag"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
