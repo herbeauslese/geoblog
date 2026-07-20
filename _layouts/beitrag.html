@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% assign fb_label = site.data.fachbereiche[page.fachbereich] %}
+{% assign level_label = site.data.levels[page.level] %}
+{% if page.fachbereich == "news" %}
+  {% assign tag_class = "news" %}
+  {% assign tag_label = "News" %}
+{% elsif page.level == "fortgeschritten" %}
+  {% assign tag_class = "advanced" %}
+  {% assign tag_label = level_label %}
+{% else %}
+  {% assign tag_class = "basics" %}
+  {% assign tag_label = level_label %}
+{% endif %}
+
+{% assign month_num = page.date | date: "%m" %}
+{% assign month_name = site.data.monate[month_num] %}
+
+<p class="crumb">{{ fb_label }}{% if level_label %} / {{ level_label }}{% endif %} / {{ page.title }}</p>
+<h2>{{ page.title }}</h2>
+<div class="meta">
+  <span class="tag {{ tag_class }}">{{ tag_label }}</span>
+  <span>{{ page.date | date: "%-d." }} {{ month_name }} {{ page.date | date: "%Y" }}</span>
+</div>
+<div class="post-content">
+  {{ content }}
+</div>
