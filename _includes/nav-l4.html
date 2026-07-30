@@ -1,0 +1,36 @@
+{% comment %}
+  Baumknoten, Ebene 4 (tiefste unterstützte Kategorie-Ebene). Rendert nur
+  noch direkt zugeordnete Artikel, keine weitere Kategorie-Verschachtelung.
+  Für eine 5. Ebene: nav-l5.html nach demselben Muster wie nav-l3.html
+  anlegen und hier den entsprechenden Include ergänzen.
+
+  Jekyll/Liquid erlaubt keine rekursiven Includes ("Circular include
+  detected") – deshalb eine feste Kette separater Dateien statt eines
+  sich selbst einbindenden Templates.
+
+  Erwartet: include.kategorie_id, include.ahnen (Array der Kategorie-IDs
+  auf dem Pfad zur aktuell angezeigten Seite, zum automatischen Aufklappen).
+{% endcomment %}
+{% assign fg = site.data.fachgebiete | where: "id", include.kategorie_id | first %}
+{% if fg %}
+  {% assign artikel = site.wiki | where: "uebergeordnet", fg.id | where_exp: "a", "a.ist_kategorie != true" | sort: "title" %}
+  {% assign fg_seite = site.wiki | where: "kategorie", fg.id | where: "ist_kategorie", true | first %}
+  {% assign offen = false %}
+  {% if include.ahnen contains fg.id %}{% assign offen = true %}{% endif %}
+  <li class="nav-item">
+    {% if artikel.size > 0 %}
+      <details class="nav-details"{% if offen %} open{% endif %}>
+        <summary>
+          {% if fg_seite %}<a href="{{ fg_seite.url | relative_url }}" class="nav-link{% if page.url == fg_seite.url %} active{% endif %}">{{ fg.titel }}</a>{% else %}<span class="nav-link nav-link-plain">{{ fg.titel }}</span>{% endif %}
+        </summary>
+        <ul>
+          {% for p in artikel %}
+            <li class="nav-item"><a href="{{ p.url | relative_url }}" class="nav-link nav-link-article{% if page.url == p.url %} active{% endif %}">{{ p.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </details>
+    {% else %}
+      {% if fg_seite %}<a href="{{ fg_seite.url | relative_url }}" class="nav-link{% if page.url == fg_seite.url %} active{% endif %}">{{ fg.titel }}</a>{% else %}<span class="nav-link nav-link-plain">{{ fg.titel }}</span>{% endif %}
+    {% endif %}
+  </li>
+{% endif %}

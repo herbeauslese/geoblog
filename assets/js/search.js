@@ -1,32 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("search-input");
-  if (!input) return;
+  const container = document.getElementById("tree-container");
+  if (!input || !container) return;
 
-  const sections = document.querySelectorAll(".nav-section");
+  const items = Array.from(container.querySelectorAll(".nav-item"));
+  const detailsEls = Array.from(container.querySelectorAll("details.nav-details"));
+  const initialOpen = new Map(detailsEls.map((d) => [d, d.open]));
+
+  function linkOf(li) {
+    return li.querySelector(":scope > .nav-link, :scope > details > summary > .nav-link");
+  }
+
+  function reset() {
+    items.forEach((li) => { li.style.display = ""; });
+    detailsEls.forEach((d) => { d.open = initialOpen.get(d); });
+  }
 
   input.addEventListener("input", () => {
     const q = input.value.trim().toLowerCase();
 
-    sections.forEach(section => {
-      let sectionHasMatch = false;
+    if (!q) {
+      reset();
+      return;
+    }
 
-      section.querySelectorAll(".nav-link").forEach(link => {
-        const match = !q || link.textContent.toLowerCase().includes(q);
-        link.style.display = match ? "" : "none";
-        if (match) sectionHasMatch = true;
-      });
+    items.forEach((li) => {
+      const link = linkOf(li);
+      const text = link ? link.textContent.toLowerCase() : "";
+      li.dataset.match = text.includes(q) ? "1" : "0";
+    });
 
-      section.querySelectorAll(".nav-group-label").forEach(group => {
-        let el = group.nextElementSibling;
-        let anyVisible = false;
-        while (el && el.classList.contains("nav-link")) {
-          if (el.style.display !== "none") anyVisible = true;
-          el = el.nextElementSibling;
-        }
-        group.style.display = anyVisible ? "" : "none";
-      });
+    items.forEach((li) => {
+      const selfMatch = li.dataset.match === "1";
+      const hasMatchingDescendant = !!li.querySelector('.nav-item[data-match="1"]');
+      const visible = selfMatch || hasMatchingDescendant;
+      li.style.display = visible ? "" : "none";
 
-      section.style.display = sectionHasMatch ? "" : "none";
+      const details = li.querySelector(":scope > details.nav-details");
+      if (details && visible) {
+        details.open = true;
+      }
     });
   });
 });

@@ -143,63 +143,107 @@ header {
   padding: 4px 6px;
 }
 
-.nav-section-title {
+/* Baum als verschachtelte <ul>/<li>/<details> — Akkordeon-Verhalten wird
+   in nav.js gesteuert (nur ein Zweig je Ebene offen), Grundzustand wird
+   serverseitig anhand des Seitenpfads vorbestimmt (siehe sidebar.html). */
+
+.nav-tree,
+.nav-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-tree ul {
+  padding-left: 12px;
+  margin-left: 5px;
+  border-left: 1px solid var(--hairline);
+}
+
+.nav-item {
+  margin: 1px 0;
+}
+
+.nav-item.nav-top {
+  margin-top: 10px;
+}
+
+.nav-item.nav-top:first-child {
+  margin-top: 2px;
+}
+
+details.nav-details {
+  margin: 0;
+}
+
+details.nav-details > summary {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  list-style: none;
+  padding: 2px 4px 2px 0;
+  border-radius: 4px;
+}
+
+details.nav-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.nav-details > summary::marker {
+  content: "";
+}
+
+details.nav-details > summary::before {
+  content: "\25B8";
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1em;
+  font-size: 0.68em;
+  color: var(--text-muted);
+  transition: transform 0.12s ease;
+}
+
+details.nav-details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+.nav-top > details.nav-details > summary .nav-link {
   font-size: 0.72em;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-muted);
-  padding: 4px 6px;
 }
 
-.nav-group-label {
-  font-size: 0.72em;
-  font-weight: 600;
-  color: var(--text-muted);
-  padding: 6px 6px 2px 14px;
+.nav-top > details.nav-details > summary .nav-link.active {
+  color: var(--accent);
 }
 
 .nav-link {
-  display: block;
-  padding: 5px 10px 5px 14px;
-  margin: 1px 0;
-  border-left: 3px solid transparent;
-  border-radius: 0 4px 4px 0;
+  display: inline-block;
+  flex: 1 1 auto;
+  padding: 4px 6px 4px 2px;
+  border-radius: 4px;
   color: var(--text);
   text-decoration: none;
-  font-size: 0.9em;
+  font-size: 0.88em;
   line-height: 1.35;
 }
 
-.nav-link:hover {
+a.nav-link:hover {
   background: #f1f1f1;
 }
 
 .nav-link.active {
   background: var(--accent-bg);
-  border-left-color: var(--accent);
   color: var(--accent);
   font-weight: 600;
 }
 
-.nav-node {
-  margin: 1px 0;
-}
-
-.nav-node.nav-top {
-  margin-top: 14px;
-}
-
-.nav-node:not(.nav-top) .nav-section-title {
-  padding: 3px 6px;
-  text-transform: none;
-  letter-spacing: normal;
-  font-weight: 500;
-}
-
-.nav-node:not(.nav-top) .nav-section-title .nav-link {
-  font-size: 0.88em;
-  color: var(--text);
+.nav-link-plain {
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 .nav-link-article {
