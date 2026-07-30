@@ -1,17 +1,22 @@
 ---
-title: "Paläontologie"
+title: Paläontologie
+parent: Angrenzende Geowissenschaften
+nav_order: 3
 kategorie: palaeontologie
 ist_kategorie: true
 uebergeordnet: geowissenschaften
 tags: []
 schwierigkeit: grundlagen
 status: stub
-kurzbeschreibung: "Fossilien, Erdgeschichte und die Entwicklung des Lebens auf der Erde."
+kurzbeschreibung: Fossilien, Erdgeschichte und die Entwicklung des Lebens auf der
+  Erde.
 verwandte_themen: []
 quellen: []
 literatur: []
 published: true
 ---
+[Grundlagen]{: .label .label-blue } [Stub]{: .label .label-grey-dk-000 }
+
 Fossilien, Erdgeschichte und die Entwicklung des Lebens auf der Erde.
 
 _Dieser Kategorie-Artikel ist ein Platzhalter. Inhalte folgen._

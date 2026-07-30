@@ -1,17 +1,21 @@
 ---
-title: "Asien"
+title: Asien
+parent: Regionale Geographie & Länderkunde
+nav_order: 2
 kategorie: asien
 ist_kategorie: true
 uebergeordnet: regionale-geographie
 tags: []
 schwierigkeit: grundlagen
 status: stub
-kurzbeschreibung: "Naturräume, Länder und Regionen Asiens."
+kurzbeschreibung: Naturräume, Länder und Regionen Asiens.
 verwandte_themen: []
 quellen: []
 literatur: []
 published: true
 ---
+[Grundlagen]{: .label .label-blue } [Stub]{: .label .label-grey-dk-000 }
+
 Naturräume, Länder und Regionen Asiens.
 
 _Dieser Kategorie-Artikel ist ein Platzhalter. Inhalte folgen._

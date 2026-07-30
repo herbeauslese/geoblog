@@ -1,17 +1,21 @@
 ---
-title: "Physische Geographie"
+title: Physische Geographie
+nav_order: 2
 kategorie: physische-geographie
 ist_kategorie: true
-uebergeordnet: null
+uebergeordnet:
 tags: []
 schwierigkeit: grundlagen
 status: stub
-kurzbeschreibung: "Geomorphologie, Klimatologie, Hydrologie, Bodengeographie, Biogeographie, Glaziologie, Küsten- und Meeresgeographie, Landschaftsökologie."
+kurzbeschreibung: Geomorphologie, Klimatologie, Hydrologie, Bodengeographie, Biogeographie,
+  Glaziologie, Küsten- und Meeresgeographie, Landschaftsökologie.
 verwandte_themen: []
 quellen: []
 literatur: []
 published: true
 ---
+[Grundlagen]{: .label .label-blue } [Stub]{: .label .label-grey-dk-000 }
+
 Geomorphologie, Klimatologie, Hydrologie, Bodengeographie, Biogeographie, Glaziologie, Küsten- und Meeresgeographie, Landschaftsökologie.
 
 _Dieser Kategorie-Artikel ist ein Platzhalter. Inhalte folgen._
