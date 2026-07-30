@@ -47,7 +47,7 @@ layout: default
 </div>
 
 {% comment %} Unterartikel: alle veröffentlichten Seiten dieser Kategorie bzw. mit uebergeordnet == page.kategorie {% endcomment %}
-{% assign kinder = site.wiki | where_exp: "item", "item.uebergeordnet == page.kategorie and item.ist_kategorie != true" %}
+{% assign kinder = site.wiki | where: "uebergeordnet", page.kategorie | where_exp: "item", "item.ist_kategorie != true" %}
 {% if page.ist_kategorie %}
   {% assign unterkategorien = site.data.fachgebiete | where: "parent", page.kategorie %}
 {% endif %}
