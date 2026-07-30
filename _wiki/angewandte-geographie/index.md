@@ -10,7 +10,7 @@ kurzbeschreibung: "Stadt- und Regionalplanung, Landschaftsplanung, Umweltplanung
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Stadt- und Regionalplanung, Landschaftsplanung, Umweltplanung, Entwicklungsgeographie sowie Risiko- und Naturgefahrenmanagement.
 

@@ -10,7 +10,7 @@ kurzbeschreibung: "Klimawandel, Nachhaltigkeitsforschung, Ressourcengeographie, 
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Klimawandel, Nachhaltigkeitsforschung, Ressourcengeographie, Political Ecology und Umweltgerechtigkeit.
 

@@ -10,7 +10,7 @@ kurzbeschreibung: "Geographische Informationssysteme, Fernerkundung, Kartographi
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Geographische Informationssysteme, Fernerkundung, Kartographie, Geodäsie und Geostatistik.
 

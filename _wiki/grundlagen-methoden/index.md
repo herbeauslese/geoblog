@@ -10,7 +10,7 @@ kurzbeschreibung: "Einführung in die Geographie, Wissenschaftstheorie, Fachgesc
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Einführung in die Geographie, Wissenschaftstheorie, Fachgeschichte, Forschungsmethoden, Statistik und grundlegende Kartenkunde.
 

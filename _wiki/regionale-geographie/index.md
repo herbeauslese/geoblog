@@ -10,7 +10,7 @@ kurzbeschreibung: "Kontinente, Länder, Regionen sowie naturräumliche und kultu
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Kontinente, Länder, Regionen sowie naturräumliche und kulturelle Großräume der Erde.
 

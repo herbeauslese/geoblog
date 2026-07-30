@@ -10,7 +10,7 @@ kurzbeschreibung: "Wirtschafts-, Sozial-, Bevölkerungs-, Politische, Kultur-, S
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Wirtschafts-, Sozial-, Bevölkerungs-, Politische, Kultur-, Stadt-, Verkehrs- und Tourismusgeographie.
 

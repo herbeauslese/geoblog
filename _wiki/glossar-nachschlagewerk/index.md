@@ -10,7 +10,7 @@ kurzbeschreibung: "Fachbegriffe, Personen der Geographiegeschichte, Zeittafeln u
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Fachbegriffe, Personen der Geographiegeschichte, Zeittafeln und Klassifikationssysteme.
 

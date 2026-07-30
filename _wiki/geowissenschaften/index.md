@@ -10,7 +10,7 @@ kurzbeschreibung: "Geologie, Mineralogie & Petrologie, Paläontologie, Geophysik
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Geologie, Mineralogie & Petrologie, Paläontologie, Geophysik, Seismologie & Vulkanologie, Ozeanographie, Meteorologie, Bodenkunde, Planetologie.
 

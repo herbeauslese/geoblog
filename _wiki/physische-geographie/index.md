@@ -10,7 +10,7 @@ kurzbeschreibung: "Geomorphologie, Klimatologie, Hydrologie, Bodengeographie, Bi
 verwandte_themen: []
 quellen: []
 literatur: []
-published: false
+published: true
 ---
 Geomorphologie, Klimatologie, Hydrologie, Bodengeographie, Biogeographie, Glaziologie, Küsten- und Meeresgeographie, Landschaftsökologie.
 
