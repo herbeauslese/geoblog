@@ -15,7 +15,7 @@ quellen: []
 literatur: []
 published: true
 ---
-[Grundlagen]{: .label .label-blue } [Stub]{: .label .label-grey-dk-000 }
+<span class="label label-blue">Grundlagen</span> <span class="label label-grey-dk-000">Stub</span>
 
 Physikalische Untersuchung des Erdinneren und globaler geodynamischer Prozesse.
 

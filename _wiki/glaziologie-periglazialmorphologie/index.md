@@ -15,7 +15,7 @@ quellen: []
 literatur: []
 published: true
 ---
-[Grundlagen]{: .label .label-blue } [Stub]{: .label .label-grey-dk-000 }
+<span class="label label-blue">Grundlagen</span> <span class="label label-grey-dk-000">Stub</span>
 
 Gletscher, Eiszeiten, Permafrost und die Formung von Landschaften durch Eis und Kälte.
 
