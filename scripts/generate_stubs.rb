@@ -6,16 +6,20 @@
 #
 # Eingabeformat pro Eintrag (siehe scripts/themen.beispiel.yml):
 #   slug:              Dateiname ohne .md, eindeutig innerhalb der Kategorie
-#   titel:              Artikeltitel
-#   kategorie:          id aus _data/fachgebiete.yml (Ebene-1-Kategorie)
-#   uebergeordnet:       kategorie-id ODER slug eines übergeordneten Artikels
+#   titel:              Artikeltitel (muss sich von allen Geschwister- und
+#                        Kindtiteln unterscheiden, das nutzt Just the Docs
+#                        zur Navigations-Zuordnung über `parent:`)
+#   kategorie:          id aus _data/fachgebiete.yml (die unmittelbare,
+#                        speziellste Kategorie des Artikels)
 #   kurzbeschreibung:    kurzer Teaser
 #   schwierigkeit:       grundlagen | fortgeschritten | experte
 #   tags:                Liste von Schlagworten
 #
 # Erzeugte Artikel sind standardmäßig `published: false` (siehe _config.yml
 # defaults) und erscheinen erst nach manuellem Umschalten auf `true` in
-# Navigation, Suche und Build.
+# Navigation, Suche und Build. `parent:` wird automatisch aus dem Titel der
+# Kategorie in _data/fachgebiete.yml gesetzt (Just the Docs ordnet Seiten
+# über den exakten Titel der Elternseite ein).
 
 require "yaml"
 require "fileutils"
@@ -24,18 +28,26 @@ input = ARGV[0]
 abort "Nutzung: ruby scripts/generate_stubs.rb <themen.yml>" unless input
 
 themen = YAML.load_file(input)
-gueltige_kategorien = YAML.load_file("_data/fachgebiete.yml").map { |k| k["id"] }
+fachgebiete = YAML.load_file("_data/fachgebiete.yml")
+fachgebiete_by_id = fachgebiete.each_with_object({}) { |c, h| h[c["id"]] = c }
+
+SCHWIERIGKEIT_LABEL = {
+  "grundlagen" => ["Grundlagen", "label-blue"],
+  "fortgeschritten" => ["Fortgeschritten", "label-purple"],
+  "experte" => ["Experte", "label-red"],
+}.freeze
 
 themen.each do |t|
   slug = t.fetch("slug")
-  kategorie = t.fetch("kategorie")
+  kategorie_id = t.fetch("kategorie")
+  kategorie = fachgebiete_by_id[kategorie_id]
 
-  unless gueltige_kategorien.include?(kategorie)
-    warn "Übersprungen (#{slug}): unbekannte Kategorie '#{kategorie}'"
+  unless kategorie
+    warn "Übersprungen (#{slug}): unbekannte Kategorie '#{kategorie_id}'"
     next
   end
 
-  dir = File.join("_wiki", kategorie)
+  dir = File.join("_wiki", kategorie_id)
   FileUtils.mkdir_p(dir)
   path = File.join(dir, "#{slug}.md")
 
@@ -44,13 +56,17 @@ themen.each do |t|
     next
   end
 
+  schwierigkeit = t.fetch("schwierigkeit", "grundlagen")
+  label_text, label_class = SCHWIERIGKEIT_LABEL.fetch(schwierigkeit, SCHWIERIGKEIT_LABEL["grundlagen"])
+
   front_matter = {
     "title" => t.fetch("titel"),
-    "kategorie" => kategorie,
+    "parent" => kategorie.fetch("titel"),
+    "kategorie" => kategorie_id,
     "ist_kategorie" => false,
-    "uebergeordnet" => t.fetch("uebergeordnet", kategorie),
+    "uebergeordnet" => kategorie_id,
     "tags" => t.fetch("tags", []),
-    "schwierigkeit" => t.fetch("schwierigkeit", "grundlagen"),
+    "schwierigkeit" => schwierigkeit,
     "status" => "stub",
     "kurzbeschreibung" => t.fetch("kurzbeschreibung", ""),
     "verwandte_themen" => t.fetch("verwandte_themen", []),
@@ -59,8 +75,15 @@ themen.each do |t|
     "published" => false,
   }
 
-  content = "---\n#{front_matter.to_yaml.sub(/\A---\n/, "")}---\n#{t.fetch("kurzbeschreibung", "")}\n\n_Dieser Artikel ist ein Platzhalter. Inhalte folgen._\n"
+  yaml_body = front_matter.to_yaml.sub(/\A---\n/, "")
+  body = <<~MD
+    [#{label_text}]{: .label .#{label_class} } [Stub]{: .label .label-grey-dk-000 }
 
-  File.write(path, content)
+    #{t.fetch("kurzbeschreibung", "")}
+
+    _Dieser Artikel ist ein Platzhalter. Inhalte folgen._
+  MD
+
+  File.write(path, "---\n#{yaml_body}---\n#{body}")
   puts "Erzeugt: #{path}"
 end

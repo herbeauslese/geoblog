@@ -1,27 +1,27 @@
 # Beispiel-Themenliste für scripts/generate_stubs.rb.
-# Zeigt das Schema für Ebene-2/3-Artikel, mit denen die Struktur später
-# automatisch erweitert werden kann. Nicht ausgeführt — dient als Vorlage.
-
-- slug: geomorphologie
-  titel: "Geomorphologie"
-  kategorie: physische-geographie
-  uebergeordnet: physische-geographie
-  kurzbeschreibung: "Lehre von den Landoberflächenformen und den Prozessen ihrer Entstehung."
-  schwierigkeit: grundlagen
-  tags: [geomorphologie, oberflächenformen, reliefgenese]
+# Zeigt das Schema für Ebene-3-Artikel (und tiefer), mit denen die Struktur
+# später automatisch erweitert werden kann. Nicht ausgeführt — dient als
+# Vorlage. `kategorie` referenziert die unmittelbare, speziellste
+# Kategorie aus _data/fachgebiete.yml; `parent:` für Just the Docs wird
+# vom Skript automatisch aus deren Titel abgeleitet.
 
 - slug: fluviale-geomorphologie
   titel: "Fluviale Geomorphologie"
-  kategorie: physische-geographie
-  uebergeordnet: geomorphologie
+  kategorie: geomorphologie
   kurzbeschreibung: "Formung der Landoberfläche durch fließendes Wasser."
   schwierigkeit: fortgeschritten
   tags: [flüsse, erosion, sedimentation]
 
-- slug: klimatologie
-  titel: "Klimatologie"
-  kategorie: physische-geographie
-  uebergeordnet: physische-geographie
-  kurzbeschreibung: "Wissenschaft von Klima, Klimazonen und Klimadynamik."
+- slug: glaziale-geomorphologie
+  titel: "Glaziale Geomorphologie"
+  kategorie: geomorphologie
+  kurzbeschreibung: "Formung der Landoberfläche durch Gletscher und Inlandeis."
+  schwierigkeit: fortgeschritten
+  tags: [gletscher, eiszeit, moränen]
+
+- slug: klimaklassifikation
+  titel: "Klimaklassifikation"
+  kategorie: klimatologie
+  kurzbeschreibung: "Systematische Einteilung der Erde in Klimazonen, z.B. nach Köppen-Geiger."
   schwierigkeit: grundlagen
-  tags: [klima, atmosphäre]
+  tags: [klimazonen, köppen-geiger]
