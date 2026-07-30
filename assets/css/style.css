@@ -186,6 +186,28 @@ header {
   font-weight: 600;
 }
 
+.nav-subtree {
+  margin-left: 12px;
+  padding-left: 6px;
+  border-left: 1px solid var(--hairline);
+}
+
+.nav-subtree .nav-section-title {
+  padding: 3px 6px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 500;
+}
+
+.nav-subtree .nav-section-title .nav-link {
+  font-size: 0.88em;
+  color: var(--text);
+}
+
+.nav-link-article {
+  color: var(--text-muted);
+}
+
 /* ---------- Content pane ---------- */
 
 .content-pane {

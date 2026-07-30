@@ -69,3 +69,386 @@
   kurzbeschreibung: >
     Fachbegriffe, Personen der Geographiegeschichte, Zeittafeln und
     Klassifikationssysteme.
+
+# ---------------------------------------------------------------------------
+# Ebene 2 — Unterkategorien je Hauptkategorie
+# ---------------------------------------------------------------------------
+
+# Grundlagen & Methoden
+- id: geschichte-der-geographie
+  titel: "Geschichte der Geographie"
+  parent: grundlagen-methoden
+  kurzbeschreibung: >
+    Entwicklung des Faches von der Antike bis zur modernen Geographie,
+    zentrale Denkschulen und Paradigmenwechsel.
+
+- id: wissenschaftstheorie-geographie
+  titel: "Wissenschaftstheorie & Grundbegriffe"
+  parent: grundlagen-methoden
+  kurzbeschreibung: >
+    Raum-, Orts- und Landschaftskonzepte, erkenntnistheoretische Positionen
+    und das Selbstverständnis der Geographie als Fach.
+
+- id: forschungsmethoden-geographie
+  titel: "Forschungsmethoden der Geographie"
+  parent: grundlagen-methoden
+  kurzbeschreibung: >
+    Qualitative und quantitative Erhebungs- und Auswertungsverfahren,
+    Feldmethoden, Fallstudiendesign.
+
+- id: statistik-geographie
+  titel: "Statistik & quantitative Methoden"
+  parent: grundlagen-methoden
+  kurzbeschreibung: >
+    Deskriptive und schließende Statistik, räumliche Statistik und
+    Modellbildung in der Geographie.
+
+- id: kartenkunde
+  titel: "Kartenkunde & Orientierung"
+  parent: grundlagen-methoden
+  kurzbeschreibung: >
+    Kartenlesen, Maßstab, Projektionen, Koordinatensysteme und
+    Geländeorientierung als Grundfertigkeiten.
+
+# Physische Geographie
+- id: geomorphologie
+  titel: "Geomorphologie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Lehre von den Landoberflächenformen und den exogenen wie endogenen
+    Prozessen ihrer Entstehung.
+
+- id: klimatologie
+  titel: "Klimatologie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Wissenschaft von Klima, Klimazonen, Klimadynamik und
+    Klimaklassifikation.
+
+- id: hydrologie
+  titel: "Hydrologie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Wasserkreislauf, Gewässerkunde, Grundwasser und hydrologische
+    Prozesse an Land.
+
+- id: bodengeographie
+  titel: "Bodengeographie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Räumliche Verbreitung, Genese und Klassifikation von Böden im
+    Landschaftszusammenhang.
+
+- id: biogeographie
+  titel: "Biogeographie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Räumliche Verbreitung von Pflanzen und Tieren, Vegetationszonen und
+    Ökozonen der Erde.
+
+- id: glaziologie-periglazialmorphologie
+  titel: "Glaziologie & Periglazialmorphologie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Gletscher, Eiszeiten, Permafrost und die Formung von Landschaften
+    durch Eis und Kälte.
+
+- id: kuesten-und-meeresgeographie
+  titel: "Küsten- und Meeresgeographie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Küstenformen, Meeresströmungen, Gezeiten und die Dynamik von
+    Land-Meer-Übergängen.
+
+- id: landschaftsoekologie
+  titel: "Landschaftsökologie"
+  parent: physische-geographie
+  kurzbeschreibung: >
+    Wechselwirkungen zwischen Landschaftselementen, Stoffkreisläufe und
+    Ökosystemfunktionen im Raum.
+
+# Humangeographie
+- id: wirtschaftsgeographie
+  titel: "Wirtschaftsgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Räumliche Organisation von Produktion, Handel, Arbeitsmärkten und
+    globalen Wertschöpfungsketten.
+
+- id: sozialgeographie
+  titel: "Sozialgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Räumliche Dimensionen sozialer Ungleichheit, Lebensstile und
+    gesellschaftlicher Strukturen.
+
+- id: bevoelkerungsgeographie
+  titel: "Bevölkerungsgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Bevölkerungsverteilung, demographischer Wandel, Migration und
+    Bevölkerungsdynamik.
+
+- id: politische-geographie
+  titel: "Politische Geographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Staatsgrenzen, Geopolitik, räumliche Machtstrukturen und politische
+    Raumordnung.
+
+- id: kulturgeographie
+  titel: "Kulturgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Räumliche Ausprägung kultureller Praktiken, Identitäten und
+    Bedeutungszuschreibungen.
+
+- id: stadtgeographie
+  titel: "Stadtgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Struktur, Funktion und Entwicklung von Städten sowie
+    Urbanisierungsprozesse.
+
+- id: verkehrsgeographie
+  titel: "Verkehrsgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Räumliche Muster von Mobilität, Verkehrsinfrastruktur und
+    Erreichbarkeit.
+
+- id: tourismusgeographie
+  titel: "Tourismusgeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Räumliche Strukturen und Wirkungen von Tourismus sowie
+    Destinationsentwicklung.
+
+- id: agrargeographie
+  titel: "Agrargeographie"
+  parent: humangeographie
+  kurzbeschreibung: >
+    Räumliche Organisation von Landwirtschaft, ländlichem Raum und
+    Agrarstrukturwandel.
+
+# Regionale Geographie & Länderkunde
+- id: afrika
+  titel: "Afrika"
+  parent: regionale-geographie
+  kurzbeschreibung: "Naturräume, Länder und Regionen Afrikas."
+
+- id: asien
+  titel: "Asien"
+  parent: regionale-geographie
+  kurzbeschreibung: "Naturräume, Länder und Regionen Asiens."
+
+- id: europa
+  titel: "Europa"
+  parent: regionale-geographie
+  kurzbeschreibung: "Naturräume, Länder und Regionen Europas."
+
+- id: nordamerika
+  titel: "Nordamerika"
+  parent: regionale-geographie
+  kurzbeschreibung: "Naturräume, Länder und Regionen Nordamerikas."
+
+- id: suedamerika
+  titel: "Südamerika"
+  parent: regionale-geographie
+  kurzbeschreibung: "Naturräume, Länder und Regionen Südamerikas."
+
+- id: australien-ozeanien
+  titel: "Australien & Ozeanien"
+  parent: regionale-geographie
+  kurzbeschreibung: "Naturräume, Länder und Regionen Australiens und Ozeaniens."
+
+- id: polarregionen
+  titel: "Polarregionen"
+  parent: regionale-geographie
+  kurzbeschreibung: "Arktis und Antarktis als eigenständige naturräumliche Großregionen."
+
+# Geoinformatik, Kartographie & Fernerkundung
+- id: geographische-informationssysteme
+  titel: "Geographische Informationssysteme (GIS)"
+  parent: geoinformatik-kartographie
+  kurzbeschreibung: >
+    Erfassung, Verwaltung, Analyse und Visualisierung raumbezogener
+    Daten mit GIS.
+
+- id: fernerkundung
+  titel: "Fernerkundung"
+  parent: geoinformatik-kartographie
+  kurzbeschreibung: >
+    Satelliten- und Luftbildgestützte Erfassung der Erdoberfläche und
+    ihrer Veränderungen.
+
+- id: kartographie
+  titel: "Kartographie"
+  parent: geoinformatik-kartographie
+  kurzbeschreibung: >
+    Theorie und Praxis der Kartengestaltung, Kartenprojektionen und
+    kartographischen Kommunikation.
+
+- id: geodaesie
+  titel: "Geodäsie"
+  parent: geoinformatik-kartographie
+  kurzbeschreibung: >
+    Vermessung und mathematische Beschreibung der Erdfigur sowie
+    Positionsbestimmung.
+
+- id: geostatistik-raeumliche-analyse
+  titel: "Geostatistik & Räumliche Analyse"
+  parent: geoinformatik-kartographie
+  kurzbeschreibung: >
+    Statistische Methoden zur Analyse und Modellierung raumbezogener
+    Daten.
+
+# Angewandte Geographie & Raumplanung
+- id: stadt-und-regionalplanung
+  titel: "Stadt- und Regionalplanung"
+  parent: angewandte-geographie
+  kurzbeschreibung: >
+    Planung und Steuerung städtischer und regionaler Raumentwicklung.
+
+- id: landschaftsplanung
+  titel: "Landschaftsplanung"
+  parent: angewandte-geographie
+  kurzbeschreibung: >
+    Planung und Gestaltung von Landschaften unter ökologischen und
+    gesellschaftlichen Ansprüchen.
+
+- id: umweltplanung
+  titel: "Umweltplanung"
+  parent: angewandte-geographie
+  kurzbeschreibung: >
+    Integration von Umweltbelangen in räumliche Planungsprozesse.
+
+- id: entwicklungsgeographie
+  titel: "Entwicklungsgeographie"
+  parent: angewandte-geographie
+  kurzbeschreibung: >
+    Räumliche Disparitäten von Entwicklung, Entwicklungspolitik und
+    globaler Ungleichheit.
+
+- id: risiko-und-naturgefahrenmanagement
+  titel: "Risiko- und Naturgefahrenmanagement"
+  parent: angewandte-geographie
+  kurzbeschreibung: >
+    Umgang mit Naturgefahren, Vulnerabilität und räumlichem
+    Risikomanagement.
+
+# Mensch-Umwelt-Beziehungen & Globaler Wandel
+- id: klimawandel
+  titel: "Klimawandel"
+  parent: mensch-umwelt-globaler-wandel
+  kurzbeschreibung: >
+    Ursachen, Verlauf und Folgen des anthropogenen Klimawandels sowie
+    Anpassungsstrategien.
+
+- id: nachhaltigkeitsforschung
+  titel: "Nachhaltigkeitsforschung"
+  parent: mensch-umwelt-globaler-wandel
+  kurzbeschreibung: >
+    Konzepte nachhaltiger Entwicklung und Transformation von
+    Mensch-Umwelt-Systemen.
+
+- id: ressourcengeographie
+  titel: "Ressourcengeographie"
+  parent: mensch-umwelt-globaler-wandel
+  kurzbeschreibung: >
+    Nutzung, Verteilung und Konflikte um natürliche Ressourcen.
+
+- id: political-ecology
+  titel: "Political Ecology"
+  parent: mensch-umwelt-globaler-wandel
+  kurzbeschreibung: >
+    Politisch-ökonomische Perspektiven auf Mensch-Umwelt-Beziehungen und
+    Umweltkonflikte.
+
+- id: umweltgerechtigkeit
+  titel: "Umweltgerechtigkeit"
+  parent: mensch-umwelt-globaler-wandel
+  kurzbeschreibung: >
+    Ungleiche Verteilung von Umweltbelastungen und -risiken sowie
+    Umweltkonflikte.
+
+# Angrenzende Geowissenschaften
+- id: geologie
+  titel: "Geologie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Aufbau, Zusammensetzung und Entwicklungsgeschichte der festen Erde.
+
+- id: mineralogie-petrologie
+  titel: "Mineralogie & Petrologie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Mineralien, Gesteine und ihre Entstehungsbedingungen.
+
+- id: palaeontologie
+  titel: "Paläontologie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Fossilien, Erdgeschichte und die Entwicklung des Lebens auf der
+    Erde.
+
+- id: geophysik
+  titel: "Geophysik"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Physikalische Untersuchung des Erdinneren und globaler
+    geodynamischer Prozesse.
+
+- id: seismologie-vulkanologie
+  titel: "Seismologie & Vulkanologie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Erdbeben, Vulkanismus und die zugrunde liegenden plattentektonischen
+    Prozesse.
+
+- id: ozeanographie
+  titel: "Ozeanographie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Physikalische, chemische und biologische Prozesse der Weltmeere.
+
+- id: meteorologie
+  titel: "Meteorologie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Physik der Atmosphäre, Wettergeschehen und Wettervorhersage.
+
+- id: bodenkunde
+  titel: "Bodenkunde"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Bodenbildung, -eigenschaften und -klassifikation als eigenständige
+    naturwissenschaftliche Disziplin (Pedologie).
+
+- id: planetologie
+  titel: "Planetologie"
+  parent: geowissenschaften
+  kurzbeschreibung: >
+    Vergleichende Erforschung von Planeten und anderen Himmelskörpern
+    des Sonnensystems.
+
+# Glossar & Nachschlagewerk
+- id: fachbegriffe-glossar
+  titel: "Fachbegriffe (Glossar)"
+  parent: glossar-nachschlagewerk
+  kurzbeschreibung: "Alphabetisches Nachschlagewerk zentraler geographischer Fachbegriffe."
+
+- id: personen-der-geographiegeschichte
+  titel: "Personen der Geographiegeschichte"
+  parent: glossar-nachschlagewerk
+  kurzbeschreibung: "Biographien bedeutender Geographinnen und Geographen."
+
+- id: zeittafeln
+  titel: "Zeittafeln"
+  parent: glossar-nachschlagewerk
+  kurzbeschreibung: "Chronologische Übersichten zu Erd- und Wissenschaftsgeschichte."
+
+- id: klassifikationssysteme
+  titel: "Klassifikationssysteme"
+  parent: glossar-nachschlagewerk
+  kurzbeschreibung: "Systematiken und Klassifikationsschemata der Geographie und Geowissenschaften."
