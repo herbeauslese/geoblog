@@ -1,21 +1,28 @@
-title: Geo-Blog
-description: "Notizen auf dem Weg zum Geographie-Studium — von den Basics bis zu komplexeren Themen."
+title: Geo-Wiki
+description: "Ein wissenschaftliches Nachschlagewerk zur Geographie und angrenzenden Geowissenschaften — von den Grundlagen bis zu aktuellen Forschungsthemen."
 
 markdown: kramdown
 kramdown:
   input: GFM
 
 collections:
-  beitraege:
+  wiki:
     output: true
-    permalink: /:collection/:path/
+    permalink: /wiki/:path/
 
 defaults:
   - scope:
       path: ""
-      type: "beitraege"
+      type: "wiki"
     values:
-      layout: "beitrag"
+      layout: "wiki"
+      published: false
+      status: "stub"
+      schwierigkeit: "grundlagen"
+      tags: []
+      verwandte_themen: []
+      quellen: []
+      literatur: []
   - scope:
       path: ""
     values:
@@ -25,4 +32,5 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - scripts
   - vendor

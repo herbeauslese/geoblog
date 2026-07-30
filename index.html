@@ -3,12 +3,25 @@ layout: default
 title: Willkommen
 ---
 <div class="welcome">
-  <h2>Willkommen</h2>
-  <p>Wähle links ein Thema aus, oder starte mit einem der neuesten Einträge:</p>
+  <h2>Willkommen im Geo-Wiki</h2>
+  <p>
+    Dieses Wiki begleitet die Vorbereitung auf ein Geographie-Studium und wächst
+    schrittweise zu einem vollständigen Nachschlagewerk zur Geographie und den
+    angrenzenden Geowissenschaften – von den Grundlagen bis zu aktuellen
+    Forschungsthemen.
+  </p>
+  <p>
+    Die komplette Struktur ist bereits angelegt; Artikel werden nach und nach
+    freigeschaltet. Wähle links ein Thema aus, sobald es aktiv ist, oder starte
+    mit den neuesten Einträgen:
+  </p>
   <ul class="recent">
-    {% assign recent = site.beitraege | sort: "date" | reverse | limit: 5 %}
+    {% assign recent = site.wiki | sort: "date" | reverse | limit: 5 %}
     {% for p in recent %}
-      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a> <span class="recent-date">&mdash; {{ p.date | date: "%-d.%-m.%Y" }}</span></li>
+      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
     {% endfor %}
+    {% if recent.size == 0 %}
+      <li class="empty">Noch keine veröffentlichten Artikel.</li>
+    {% endif %}
   </ul>
 </div>

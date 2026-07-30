@@ -1,0 +1,71 @@
+# Taxonomie des Geo-Wikis.
+#
+# Jede Kategorie besitzt eine eindeutige `id` (= Ordnername unter _wiki/,
+# = Wert des Front-Matter-Feldes `kategorie`). `parent: null` markiert eine
+# Ebene-1-Kategorie. Weitere Ebenen werden durch zusätzliche Einträge mit
+# gesetztem `parent` ergänzt — die Struktur ist beliebig tief erweiterbar,
+# ohne dass Layout, Sidebar oder Breadcrumbs angepasst werden müssen.
+
+- id: grundlagen-methoden
+  titel: "Grundlagen & Methoden"
+  parent: null
+  kurzbeschreibung: >
+    Einführung in die Geographie, Wissenschaftstheorie, Fachgeschichte,
+    Forschungsmethoden, Statistik und grundlegende Kartenkunde.
+
+- id: physische-geographie
+  titel: "Physische Geographie"
+  parent: null
+  kurzbeschreibung: >
+    Geomorphologie, Klimatologie, Hydrologie, Bodengeographie, Biogeographie,
+    Glaziologie, Küsten- und Meeresgeographie, Landschaftsökologie.
+
+- id: humangeographie
+  titel: "Humangeographie"
+  parent: null
+  kurzbeschreibung: >
+    Wirtschafts-, Sozial-, Bevölkerungs-, Politische, Kultur-, Stadt-,
+    Verkehrs- und Tourismusgeographie.
+
+- id: regionale-geographie
+  titel: "Regionale Geographie & Länderkunde"
+  parent: null
+  kurzbeschreibung: >
+    Kontinente, Länder, Regionen sowie naturräumliche und kulturelle
+    Großräume der Erde.
+
+- id: geoinformatik-kartographie
+  titel: "Geoinformatik, Kartographie & Fernerkundung"
+  parent: null
+  kurzbeschreibung: >
+    Geographische Informationssysteme, Fernerkundung, Kartographie,
+    Geodäsie und Geostatistik.
+
+- id: angewandte-geographie
+  titel: "Angewandte Geographie & Raumplanung"
+  parent: null
+  kurzbeschreibung: >
+    Stadt- und Regionalplanung, Landschaftsplanung, Umweltplanung,
+    Entwicklungsgeographie sowie Risiko- und Naturgefahrenmanagement.
+
+- id: mensch-umwelt-globaler-wandel
+  titel: "Mensch-Umwelt-Beziehungen & Globaler Wandel"
+  parent: null
+  kurzbeschreibung: >
+    Klimawandel, Nachhaltigkeitsforschung, Ressourcengeographie,
+    Political Ecology und Umweltgerechtigkeit.
+
+- id: geowissenschaften
+  titel: "Angrenzende Geowissenschaften"
+  parent: null
+  kurzbeschreibung: >
+    Geologie, Mineralogie & Petrologie, Paläontologie, Geophysik,
+    Seismologie & Vulkanologie, Ozeanographie, Meteorologie, Bodenkunde,
+    Planetologie.
+
+- id: glossar-nachschlagewerk
+  titel: "Glossar & Nachschlagewerk"
+  parent: null
+  kurzbeschreibung: >
+    Fachbegriffe, Personen der Geographiegeschichte, Zeittafeln und
+    Klassifikationssysteme.
