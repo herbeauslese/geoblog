@@ -143,10 +143,6 @@ header {
   padding: 4px 6px;
 }
 
-.nav-section {
-  margin: 14px 0 4px;
-}
-
 .nav-section-title {
   font-size: 0.72em;
   font-weight: 700;
@@ -186,20 +182,22 @@ header {
   font-weight: 600;
 }
 
-.nav-subtree {
-  margin-left: 12px;
-  padding-left: 6px;
-  border-left: 1px solid var(--hairline);
+.nav-node {
+  margin: 1px 0;
 }
 
-.nav-subtree .nav-section-title {
+.nav-node.nav-top {
+  margin-top: 14px;
+}
+
+.nav-node:not(.nav-top) .nav-section-title {
   padding: 3px 6px;
   text-transform: none;
   letter-spacing: normal;
   font-weight: 500;
 }
 
-.nav-subtree .nav-section-title .nav-link {
+.nav-node:not(.nav-top) .nav-section-title .nav-link {
   font-size: 0.88em;
   color: var(--text);
 }

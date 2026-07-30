@@ -3,12 +3,50 @@
     <input type="search" id="search-input" placeholder="Suchen…" autocomplete="off">
   </div>
   <div id="tree-container">
-    {% assign top_kategorien = site.data.fachgebiete | where: "parent", nil %}
-    {% for fg in top_kategorien %}
-      <div class="nav-section">
-        {% include tree-node.html kategorie_id=fg.id %}
+    {% comment %}
+      Jekyll/Liquid erlaubt keine rekursiven Includes ("Circular include
+      detected"). Der Baum wird daher ohne Rekursion aufgebaut: für jede
+      Kategorie wird ein "materialisierter Pfad" (z.B. "physische-geographie/
+      geomorphologie") berechnet. Alphabetisches Sortieren dieser Pfade
+      ergibt automatisch die richtige Baum-Reihenfolge (Eltern vor Kindern),
+      die Segmentanzahl liefert die Einrücktiefe. Funktioniert unverändert
+      für beliebig viele künftige Hierarchieebenen.
+    {% endcomment %}
+    {% assign kategorien = site.data.fachgebiete %}
+    {% assign pfade = "" | split: "" %}
+    {% for fg in kategorien %}
+      {% assign pfad = fg.id %}
+      {% assign eltern_id = fg.parent %}
+      {% for i in (1..10) %}
+        {% if eltern_id %}
+          {% assign eltern = kategorien | where: "id", eltern_id | first %}
+          {% assign pfad = eltern.id | append: "/" | append: pfad %}
+          {% assign eltern_id = eltern.parent %}
+        {% else %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% assign pfade = pfade | push: pfad %}
+    {% endfor %}
+    {% assign pfade = pfade | sort %}
+
+    {% for pfad in pfade %}
+      {% assign segmente = pfad | split: "/" %}
+      {% assign tiefe = segmente.size | minus: 1 %}
+      {% assign kat_id = segmente | last %}
+      {% assign fg = kategorien | where: "id", kat_id | first %}
+      {% assign fg_page = site.wiki | where: "kategorie", fg.id | where: "ist_kategorie", true | first %}
+      {% assign artikel = site.wiki | where_exp: "a", "a.uebergeordnet == fg.id and a.ist_kategorie != true" | sort: "title" %}
+      <div class="nav-node{% if tiefe == 0 %} nav-top{% endif %}" style="margin-left: {{ tiefe | times: 12 }}px;">
+        <div class="nav-section-title">
+          {% if fg_page %}<a href="{{ fg_page.url | relative_url }}" class="nav-link{% if page.url == fg_page.url %} active{% endif %}">{{ fg.titel }}</a>{% else %}{{ fg.titel }}{% endif %}
+        </div>
+        {% for p in artikel %}
+          <a href="{{ p.url | relative_url }}" class="nav-link nav-link-article{% if page.url == p.url %} active{% endif %}" style="margin-left: {{ tiefe | times: 12 }}px;">{{ p.title }}</a>
+        {% endfor %}
       </div>
     {% endfor %}
+
     {% if site.wiki.size == 0 %}
       <p class="empty">Noch keine veröffentlichten Artikel. Struktur ist vorbereitet, aber ausgeblendet (<code>published: false</code>).</p>
     {% endif %}
