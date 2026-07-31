@@ -107,45 +107,26 @@ footer {
   }
 }
 
-// ---------- "Fenster mit Rand" ----------
-// Just the Docs pinnt Sidebar und Hauptbereich normalerweise randlos an den
-// Viewport. Ab der md-Breakpoint rücken wir beide gemeinsam ein, sodass sie
-// wie ein einziges, freischwebendes Fenster über dem grauen "Desktop"
-// wirken (wie im ursprünglichen Retro-Design). Unterhalb von md bleibt die
-// mobile Schubladennavigation von Just the Docs unangetastet.
+// ---------- Rand links/rechts ("Fenster"-Anmutung) ----------
+// Vorsichtige Variante: nur links/rechts wird eingerückt, oben/unten
+// bleiben Sidebar und Hauptbereich exakt so positioniert/hoch wie im
+// Just-the-Docs-Standardlayout (kein Eingriff in top/bottom/height der
+// fixed-positionierten Sidebar — das war vermutlich die Bug-Quelle des
+// vorherigen Versuchs). Die Breite der Sidebar wird zusätzlich auf
+// $nav-width-md fixiert, damit sie nicht mit der eigenen
+// Breitbildschirm-Verbreiterung von Just the Docs kollidiert.
 
-$window-inset: 20px;
+$window-inset: 24px;
 
 @include mq(md) {
   .side-bar {
-    top: $window-inset;
     left: $window-inset;
-    bottom: $window-inset;
-    height: auto;
     width: $nav-width-md;
-    border: 2px outset #fff;
-    border-right: 1px solid #c4c4c4;
-    border-radius: 4px 0 0 4px;
+    border-left: 2px outset #fff;
   }
 
   .side-bar + .main {
-    margin-top: $window-inset;
+    margin-left: calc(#{$nav-width-md} + #{$window-inset} * 2);
     margin-right: $window-inset;
-    margin-bottom: $window-inset;
-    margin-left: calc(#{$nav-width-md} + #{$window-inset});
-    max-width: calc(#{$content-width} - #{$window-inset});
-  }
-
-  .main {
-    min-height: calc(100vh - #{$window-inset * 2});
-    background-color: #fff;
-    border: 2px outset #fff;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-  }
-
-  .main-header {
-    border-top-right-radius: 4px;
-    background-color: #fff;
   }
 }
