@@ -14,7 +14,7 @@ quellen: []
 literatur: []
 published: true
 ---
-<span class="label label-blue">Grundlagen</span> <span class="label label-grey-dk-000">Stub</span>
+<span class="label label-blue">Grundlagen</span> <span class="label label-grey">Stub</span>
 
 Küstenformen, Meeresströmungen, Gezeiten und die Dynamik von Land-Meer-Übergängen.
 

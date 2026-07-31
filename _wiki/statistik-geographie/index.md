@@ -15,7 +15,7 @@ quellen: []
 literatur: []
 published: true
 ---
-<span class="label label-blue">Grundlagen</span> <span class="label label-grey-dk-000">Stub</span>
+<span class="label label-blue">Grundlagen</span> <span class="label label-grey">Stub</span>
 
 Deskriptive und schließende Statistik, räumliche Statistik und Modellbildung in der Geographie.
 

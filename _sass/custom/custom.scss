@@ -1,0 +1,108 @@
+// Retro-Reskin ("Windows 95") des Geo-Wikis, aufgesetzt auf Just the Docs.
+// Nutzt ausschließlich offizielle Erweiterungspunkte des Themes
+// (_sass/custom/custom.scss), damit Navigation/Suche/Theme-Updates
+// unangetastet bleiben.
+
+$stripe-bg: repeating-linear-gradient(
+  45deg,
+  rgba(0, 0, 0, 0.035) 0px,
+  rgba(0, 0, 0, 0.035) 1px,
+  transparent 1px,
+  transparent 8px
+);
+
+html,
+body {
+  background-color: #a4a4a4;
+}
+
+.side-bar {
+  background-color: #d6d6d6;
+  background-image: $stripe-bg;
+  border-right: 2px groove #6e6e6e;
+}
+
+.main-header {
+  border-bottom: 2px groove #6e6e6e;
+  background-color: #d6d6d6;
+}
+
+.site-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-title .site-logo {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.search-input {
+  border: 2px inset #fff !important;
+  border-radius: 2px !important;
+  background-color: #fff;
+}
+
+.btn,
+button.btn-reset {
+  border: 2px outset #fff;
+  border-radius: 2px !important;
+}
+
+.btn:active,
+button.btn-reset:active {
+  border-style: inset;
+}
+
+table,
+.table-wrapper table {
+  border: 2px groove #6e6e6e;
+}
+
+th {
+  background-color: #d6d6d6;
+}
+
+pre.highlight,
+code {
+  border: 1px solid #c4c4c4;
+}
+
+// ---------- Labels ----------
+
+.label:not(g),
+.label-blue:not(g) {
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-family: $mono-font-family;
+  letter-spacing: 0.02em;
+}
+
+.label-grey:not(g) {
+  color: $grey-dk-300;
+  background-color: #c9c9c9;
+}
+
+// ---------- Fußzeile ----------
+
+.side-bar .site-footer {
+  font-family: $mono-font-family;
+  font-size: 0.7em;
+  color: $grey-dk-000;
+  border-top: 1px solid #c4c4c4;
+}
+
+footer {
+  font-family: $mono-font-family;
+  font-size: 0.78em;
+}
+
+// ---------- Responsive: Grauer Rahmen nur auf breiten Bildschirmen sichtbar ----------
+
+@media (min-width: $md) {
+  html,
+  body {
+    background-image: $stripe-bg;
+  }
+}

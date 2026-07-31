@@ -77,7 +77,7 @@ themen.each do |t|
 
   yaml_body = front_matter.to_yaml.sub(/\A---\n/, "")
   body = <<~MD
-    <span class="label #{label_class}">#{label_text}</span> <span class="label label-grey-dk-000">Stub</span>
+    <span class="label #{label_class}">#{label_text}</span> <span class="label label-grey">Stub</span>
 
     #{t.fetch("kurzbeschreibung", "")}
 
