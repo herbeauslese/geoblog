@@ -1,7 +1,5 @@
 ---
 title: Geomorphologie
-layout: post
-date: 2026-07-31
 parent: Physische Geographie
 nav_order: 1
 kategorie: geomorphologie

@@ -1,7 +1,5 @@
 ---
 title: Physische Geographie
-layout: post
-date: 2026-07-31
 nav_order: 2
 kategorie: physische-geographie
 ist_kategorie: true
