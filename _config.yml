@@ -1,23 +1,21 @@
 title: Geo-Wiki
 description: "Ein wissenschaftliches Nachschlagewerk zur Geographie und angrenzenden Geowissenschaften — von den Grundlagen bis zu aktuellen Forschungsthemen."
 
-remote_theme: just-the-docs/just-the-docs
+# --- Theme-Spike: jekyll-theme-console ---
+# Nur Optik-Test (siehe Chat). Keine eigene Navigation/Suche in diesem
+# Schritt, das Theme bringt selbst keine mit. style: dark | light | hacker | nord
+remote_theme: b2a3e8/jekyll-theme-console
+style: hacker
+
+# Ohne diese Liste würde das Theme automatisch ALLE ~66 Wiki-Seiten als
+# flaches Kopfmenü auflisten (das Theme hat keine Baum-Navigation). Für
+# den Optik-Spike bewusst nur die Startseite.
+header_pages:
+  - index.md
 
 plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag
-
-logo: "/assets/images/earthspin.gif"
-
-search_enabled: true
-search:
-  heading_level: 2
-  previews: 2
-  preview_words_before: 3
-  preview_words_after: 3
-  tokenizer_separator: /[\s/]+/
-  rel_url: true
-  button: false
 
 markdown: kramdown
 kramdown:
@@ -27,13 +25,6 @@ collections:
   wiki:
     output: true
     permalink: /wiki/:path/
-
-just_the_docs:
-  collections:
-    wiki:
-      name: Wiki
-      nav_fold: true
-      search_exclude: false
 
 defaults:
   - scope:

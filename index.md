@@ -1,6 +1,6 @@
 ---
 title: Startseite
-nav_order: 1
+layout: home
 description: "Ein wissenschaftliches Nachschlagewerk zur Geographie und angrenzenden Geowissenschaften."
 ---
 
@@ -11,12 +11,14 @@ schrittweise zu einem vollständigen Nachschlagewerk zur Geographie und den
 angrenzenden Geowissenschaften — von den Grundlagen bis zu aktuellen
 Forschungsthemen.
 
-Die komplette Struktur ist bereits angelegt; Artikel werden nach und nach
-freigeschaltet. Nutze die Navigation links, um ein Thema auszuwählen.
+_Hinweis: Dies ist gerade ein Optik-Test mit `jekyll-theme-console`. Das
+Theme hat noch keine eigene Baum-Navigation, deshalb hier vorübergehend
+eine einfache verlinkte Liste der Hauptkategorien._
 
 ## Hauptkategorien
 
 {% assign top_kategorien = site.data.fachgebiete | where: "parent", nil %}
 {% for fg in top_kategorien %}
-- **{{ fg.titel }}** — {{ fg.kurzbeschreibung | strip_newlines | strip }}
+{% assign fg_page = site.wiki | where: "kategorie", fg.id | where: "ist_kategorie", true | first %}
+- {% if fg_page %}[**{{ fg.titel }}**]({{ fg_page.url | relative_url }}){% else %}**{{ fg.titel }}**{% endif %} — {{ fg.kurzbeschreibung | strip_newlines | strip }}
 {% endfor %}
