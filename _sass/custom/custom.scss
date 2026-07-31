@@ -106,3 +106,46 @@ footer {
     background-image: $stripe-bg;
   }
 }
+
+// ---------- "Fenster mit Rand" ----------
+// Just the Docs pinnt Sidebar und Hauptbereich normalerweise randlos an den
+// Viewport. Ab der md-Breakpoint rücken wir beide gemeinsam ein, sodass sie
+// wie ein einziges, freischwebendes Fenster über dem grauen "Desktop"
+// wirken (wie im ursprünglichen Retro-Design). Unterhalb von md bleibt die
+// mobile Schubladennavigation von Just the Docs unangetastet.
+
+$window-inset: 20px;
+
+@include mq(md) {
+  .side-bar {
+    top: $window-inset;
+    left: $window-inset;
+    bottom: $window-inset;
+    height: auto;
+    width: $nav-width-md;
+    border: 2px outset #fff;
+    border-right: 1px solid #c4c4c4;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .side-bar + .main {
+    margin-top: $window-inset;
+    margin-right: $window-inset;
+    margin-bottom: $window-inset;
+    margin-left: calc(#{$nav-width-md} + #{$window-inset});
+    max-width: calc(#{$content-width} - #{$window-inset});
+  }
+
+  .main {
+    min-height: calc(100vh - #{$window-inset * 2});
+    background-color: #fff;
+    border: 2px outset #fff;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .main-header {
+    border-top-right-radius: 4px;
+    background-color: #fff;
+  }
+}
