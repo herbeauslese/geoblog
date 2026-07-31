@@ -11,9 +11,12 @@ schrittweise zu einem vollständigen Nachschlagewerk zur Geographie und den
 angrenzenden Geowissenschaften — von den Grundlagen bis zu aktuellen
 Forschungsthemen.
 
-_Hinweis: Dies ist gerade ein Optik-Test mit `jekyll-theme-console`. Das
-Theme hat noch keine eigene Baum-Navigation, deshalb hier vorübergehend
-eine einfache verlinkte Liste der Hauptkategorien._
+_Hinweis: Dies ist gerade ein Optik-Test mit `jekyll-98`. Das Theme hat noch
+keine eigene Baum-Navigation. Wichtig: Das `home`-Layout dieses Themes
+ignoriert den Markdown-Inhalt dieser Seite komplett (zeigt nur Titel,
+Beschreibung und eine Post-Liste, die bei uns leer bleibt, da wir keine
+`_posts` nutzen) — die folgende Kategorien-Liste ist hier nur als Referenz
+stehen geblieben und wird auf der Startseite aktuell NICHT angezeigt._
 
 ## Hauptkategorien
 

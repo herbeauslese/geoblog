@@ -1,21 +1,31 @@
 title: Geo-Wiki
 description: "Ein wissenschaftliches Nachschlagewerk zur Geographie und angrenzenden Geowissenschaften — von den Grundlagen bis zu aktuellen Forschungsthemen."
 
-# --- Theme-Spike: jekyll-theme-console ---
-# Nur Optik-Test (siehe Chat). Keine eigene Navigation/Suche in diesem
-# Schritt, das Theme bringt selbst keine mit. style: dark | light | hacker | nord
-remote_theme: b2a3e8/jekyll-theme-console
-style: hacker
+# --- Theme-Spike: jekyll-98 (Windows-98-Look) ---
+# Nur Optik-Test (siehe Chat). desktop_categories/show_categories bewusst
+# AUS gelassen: die brauchen laut Theme-README einen eigenen GitHub-Actions-
+# Workflow statt des klassischen "Deploy from branch"-Builds, den dieses
+# Repo nutzt, und würden sonst als tote 404-Links enden. Auch strukturell
+# (max. ~5-7 Desktop-Icons) passt das Kategorie-Modell nicht zu unserer
+# 66-Kategorien-Taxonomie.
+remote_theme: queenkjuul/jekyll-98
 
-# Ohne diese Liste würde das Theme automatisch ALLE ~66 Wiki-Seiten als
-# flaches Kopfmenü auflisten (das Theme hat keine Baum-Navigation). Für
-# den Optik-Spike bewusst nur die Startseite.
-header_pages:
-  - index.md
+show_categories: false
+show_excerpts: false
+
+jekyll-98:
+  icon: computer
+  desktop_categories: []
+  site_links: []
+  social_links:
+    github: false
+    youtube: false
+    twitch: false
 
 plugins:
   - jekyll-remote-theme
-  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-feed
 
 markdown: kramdown
 kramdown:
