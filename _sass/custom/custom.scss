@@ -100,7 +100,7 @@ footer {
 
 // ---------- Responsive: Grauer Rahmen nur auf breiten Bildschirmen sichtbar ----------
 
-@media (min-width: $md) {
+@include mq(md) {
   html,
   body {
     background-image: $stripe-bg;
