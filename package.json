@@ -1,0 +1,14 @@
+{
+  "name": "nfl-wiki",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "node build.js && npx http-server _site -p 8080"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^14.1.0"
+  }
+}

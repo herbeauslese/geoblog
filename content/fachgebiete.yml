@@ -1,0 +1,117 @@
+# Taxonomie des NFL-Wikis.
+#
+# Jede Kategorie besitzt eine eindeutige `id` (= Ordnername unter _wiki/,
+# = Wert des Front-Matter-Feldes `kategorie`). `parent: null` markiert eine
+# Ebene-1-Kategorie. Weitere Ebenen werden durch zusätzliche Einträge mit
+# gesetztem `parent` ergänzt — die Struktur ist beliebig tief erweiterbar,
+# ohne dass Layout, Sidebar oder Breadcrumbs angepasst werden müssen.
+
+- id: grundlagen
+  titel: "Grundlagen"
+  parent: null
+  kurzbeschreibung: "Regeln, Positionen und grundlegende Begriffe für den Einstieg in American Football."
+
+- id: personnel-formationen
+  titel: "Personnel & Formationen"
+  parent: null
+  kurzbeschreibung: "Gap-Nomenklatur, Personnel-Gruppierungen und Formationen auf Offense und Defense."
+
+- id: offense
+  titel: "Offense"
+  parent: null
+  kurzbeschreibung: "Run, Pass und RPO — die drei Grundäste des Offense-Playbooks."
+
+- id: run
+  titel: "Run"
+  parent: offense
+  kurzbeschreibung: "Run-Schemes und weitere Run-Concepts."
+
+- id: run-schemes
+  titel: "Run-Schemes"
+  parent: run
+  kurzbeschreibung: "Zone-Schemes und Gap-Schemes im Vergleich."
+
+- id: zone-schemes
+  titel: "Zone-Schemes"
+  parent: run-schemes
+  kurzbeschreibung: "Laufkonzepte auf Zone-Blocking-Basis."
+
+- id: gap-schemes
+  titel: "Gap-Schemes"
+  parent: run-schemes
+  kurzbeschreibung: "Laufkonzepte auf Gap-/Man-Blocking-Basis mit Pulls."
+
+- id: sonstige-run-concepts
+  titel: "Andere Run-Concepts"
+  parent: run
+  kurzbeschreibung: "Weitere Laufkonzepte außerhalb klassischer Zone-/Gap-Schemes."
+
+- id: pass
+  titel: "Pass"
+  parent: offense
+  kurzbeschreibung: "Route Tree, Route-Concepts, Pass-Protection sowie Screens & Play-Action."
+
+- id: route-tree
+  titel: "Route Tree"
+  parent: pass
+  kurzbeschreibung: "Die einzelnen Passrouten des Route Tree."
+
+- id: route-concepts
+  titel: "Route-Concepts"
+  parent: pass
+  kurzbeschreibung: "Kombinierte Route-Concepts im Passspiel."
+
+- id: pass-protection
+  titel: "Pass-Protection"
+  parent: pass
+  kurzbeschreibung: "Schutzkonzepte der Offensive Line und Backs gegen den Pass-Rush."
+
+- id: screens-play-action
+  titel: "Screens & Play-Action"
+  parent: pass
+  kurzbeschreibung: "Screen-Passes und Play-Action-Konzepte."
+
+- id: defense
+  titel: "Defense"
+  parent: null
+  kurzbeschreibung: "Run-Defense, Coverage und Blitz."
+
+- id: run-defense
+  titel: "Run-Defense"
+  parent: defense
+  kurzbeschreibung: "Gap-Verantwortung und Run-Fits der Defense."
+
+- id: coverage
+  titel: "Coverage"
+  parent: defense
+  kurzbeschreibung: "Coverage-Shells, Zone- und Match/Man-Coverages."
+
+- id: zone-coverages
+  titel: "Zone-Coverages"
+  parent: coverage
+  kurzbeschreibung: "Coverages, bei denen Defender feste Zonen statt Gegenspieler decken."
+
+- id: match-man-coverages
+  titel: "Match- & Man-Coverages"
+  parent: coverage
+  kurzbeschreibung: "Man-basierte und pattern-matchende Coverage-Konzepte."
+
+- id: blitz-packages
+  titel: "Blitz"
+  parent: defense
+  kurzbeschreibung: "Pressure-Konzepte, die auf Run- und Pass-Defense gleichzeitig wirken."
+
+- id: special-teams
+  titel: "Special Teams"
+  parent: null
+  kurzbeschreibung: "Kickoff, Punt, Field Goal und die zugehörigen Rollen."
+
+- id: situational
+  titel: "Situational Football"
+  parent: null
+  kurzbeschreibung: "Down & Distance, Red Zone, Two-Minute-Drill und Game-Script."
+
+- id: glossar
+  titel: "Glossar"
+  parent: null
+  kurzbeschreibung: "Alphabetisches Nachschlagewerk zentraler Fachbegriffe (Personnel-Codes, Coverage-Namen etc.), aus allen Artikeln heraus verlinkt."
