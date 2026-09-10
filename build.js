@@ -22,6 +22,20 @@ const WIKI_DIR = path.join(CONTENT_DIR, "wiki");
 const ASSETS_DIR = path.join(ROOT, "assets");
 const OUT_DIR = path.join(ROOT, "_site");
 
+// GitHub Pages Projekt-Seiten (nicht <user>.github.io direkt, sondern ein
+// normales Repo) laufen unter https://<user>.github.io/<repo>/ — absolute
+// Pfade wie "/assets/..." würden also an der Domainwurzel vorbeizeigen.
+// BASE_URL wird deshalb vor jeden internen Link/Asset-Pfad gesetzt. Bei
+// einer eigenen Domain oder einem User-/Org-Root-Repo (<user>.github.io)
+// hier auf "" setzen. Per Env-Variable überschreibbar (z.B. für lokale
+// Vorschau ohne Präfix: BASE_URL= npm run build).
+const BASE_URL = process.env.BASE_URL !== undefined ? process.env.BASE_URL : "/geoblog";
+
+function url(p) {
+  if (p === "/") return BASE_URL || "/";
+  return `${BASE_URL}${p}`;
+}
+
 const SITE = {
   title: "NFL-Wiki",
   description:
@@ -122,7 +136,7 @@ function renderNavNode(fg, activeUrl, ahnenIds, isTop) {
   const isActive = seite && seite.url === activeUrl;
 
   const label = seite
-    ? `<a href="${seite.url}" class="nav-link${isActive ? " active" : ""}">${escapeHtml(fg.titel)}</a>`
+    ? `<a href="${url(seite.url)}" class="nav-link${isActive ? " active" : ""}">${escapeHtml(fg.titel)}</a>`
     : `<span class="nav-link nav-link-plain">${escapeHtml(fg.titel)}</span>`;
 
   if (!hatKinder) {
@@ -133,7 +147,7 @@ function renderNavNode(fg, activeUrl, ahnenIds, isTop) {
   const articleHtml = artikel
     .map(
       (a) =>
-        `<li class="nav-item"><a href="${a.url}" class="nav-link nav-link-article${
+        `<li class="nav-item"><a href="${url(a.url)}" class="nav-link nav-link-article${
           a.url === activeUrl ? " active" : ""
         }">${escapeHtml(a.title)}</a></li>`
     )
@@ -178,8 +192,8 @@ function renderSidebar(activeUrl, ahnenIds) {
 function renderHeader() {
   return `
 <header>
-  <a href="/" class="brand" title="Zur Übersicht" aria-label="Zur Übersicht">
-    <img src="/assets/images/star.svg" alt="" class="brand-star">
+  <a href="${url("/")}" class="brand" title="Zur Übersicht" aria-label="Zur Übersicht">
+    <img src="${url("/assets/images/star.svg")}" alt="" class="brand-star">
     <span class="brand-wordmark">${escapeHtml(SITE.title)}</span>
   </a>
   <p class="subtitle">${escapeHtml(SITE.description)}</p>
@@ -201,11 +215,11 @@ function renderPage({ title, contentPaneHtml, activeUrl, ahnenIds }) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${escapeHtml(pageTitle)}</title>
-<link rel="icon" type="image/svg+xml" href="/assets/images/star.svg">
+<link rel="icon" type="image/svg+xml" href="${url("/assets/images/star.svg")}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="${url("/assets/css/style.css")}">
 </head>
 <body>
 
@@ -224,8 +238,8 @@ function renderPage({ title, contentPaneHtml, activeUrl, ahnenIds }) {
 
 </div>
 
-<script src="/assets/js/nav.js"></script>
-<script src="/assets/js/search.js"></script>
+<script src="${url("/assets/js/nav.js")}"></script>
+<script src="${url("/assets/js/search.js")}"></script>
 </body>
 </html>
 `;
@@ -235,11 +249,11 @@ function renderPage({ title, contentPaneHtml, activeUrl, ahnenIds }) {
 
 function renderBreadcrumb(doc) {
   const chain = ancestorChain(doc.kategorie);
-  const parts = [`<a href="/">Wiki</a>`];
+  const parts = [`<a href="${url("/")}">Wiki</a>`];
   for (const fg of chain) {
     const seite = docsByKategorieAsPage.get(fg.id);
     if (seite && seite.url !== doc.url) {
-      parts.push(`<a href="${seite.url}">${escapeHtml(fg.titel)}</a>`);
+      parts.push(`<a href="${url(seite.url)}">${escapeHtml(fg.titel)}</a>`);
     } else {
       parts.push(escapeHtml(fg.titel));
     }
@@ -293,7 +307,7 @@ function renderChildrenSections(doc) {
       .map((uk) => {
         const ukSeite = docsByKategorieAsPage.get(uk.id);
         return ukSeite
-          ? `<li><a href="${ukSeite.url}">${escapeHtml(uk.titel)}</a></li>`
+          ? `<li><a href="${url(ukSeite.url)}">${escapeHtml(uk.titel)}</a></li>`
           : `<li>${escapeHtml(uk.titel)} <em>(noch nicht aktiviert)</em></li>`;
       })
       .join("\n")}
@@ -308,7 +322,7 @@ function renderChildrenSections(doc) {
 <div class="wiki-children">
   <h3>Artikel in dieser Kategorie</h3>
   <ul>
-    ${kinder.map((k) => `<li><a href="${k.url}">${escapeHtml(k.title)}</a></li>`).join("\n")}
+    ${kinder.map((k) => `<li><a href="${url(k.url)}">${escapeHtml(k.title)}</a></li>`).join("\n")}
   </ul>
 </div>`;
   }
@@ -337,8 +351,8 @@ function renderPrevNext(doc) {
   if (!prev && !next) return "";
   return `
 <nav class="wiki-prevnext">
-  ${prev ? `<a class="prev" href="${prev.url}">&laquo; ${escapeHtml(prev.title)}</a>` : ""}
-  ${next ? `<a class="next" href="${next.url}">${escapeHtml(next.title)} &raquo;</a>` : ""}
+  ${prev ? `<a class="prev" href="${url(prev.url)}">&laquo; ${escapeHtml(prev.title)}</a>` : ""}
+  ${next ? `<a class="next" href="${url(next.url)}">${escapeHtml(next.title)} &raquo;</a>` : ""}
 </nav>`;
 }
 
@@ -378,7 +392,7 @@ function renderHome() {
       const seite = docsByKategorieAsPage.get(fg.id);
       const label = escapeHtml(fg.titel);
       return seite
-        ? `<li><a href="${seite.url}">${label}</a> — <span class="recent-date">${escapeHtml(fg.kurzbeschreibung || "")}</span></li>`
+        ? `<li><a href="${url(seite.url)}">${label}</a> — <span class="recent-date">${escapeHtml(fg.kurzbeschreibung || "")}</span></li>`
         : `<li>${label} <em>(noch nicht aktiviert)</em></li>`;
     })
     .join("\n");

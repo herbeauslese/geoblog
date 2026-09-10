@@ -4,7 +4,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "node build.js",
-    "serve": "node build.js && npx http-server _site -p 8080"
+    "serve": "BASE_URL= node build.js && npx http-server _site -p 8080"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
