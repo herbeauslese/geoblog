@@ -479,9 +479,9 @@ a.nav-link:hover {
 .wiki-figure-svg {
   width: 100%;
   margin: 0;
-  border: 1px solid var(--border);
+  border: 3px solid var(--border-dark);
   background: var(--doc-bg);
-  padding: 8px;
+  padding: 10px;
 }
 
 .wiki-figure-svg svg {
