@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const dot = panel.querySelector(`.position-dot[data-id="${CSS.escape(id)}"]`);
     if (!dot) return;
     codeEl.textContent = dot.dataset.code;
+    codeEl.style.background = dot.dataset.color;
     nameEl.textContent = dot.dataset.name;
     descEl.textContent = dot.dataset.desc;
     infoDefault.hidden = true;

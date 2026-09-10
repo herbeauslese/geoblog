@@ -349,8 +349,10 @@ function renderPositionsWidget() {
       <p class="positions-info-default">Auf eine Position tippen/hovern für Details.</p>
       <div class="positions-info-detail" hidden>
         <div class="positions-info-code"></div>
-        <h4 class="positions-info-name"></h4>
-        <p class="positions-info-desc"></p>
+        <div class="positions-info-body">
+          <h4 class="positions-info-name"></h4>
+          <p class="positions-info-desc"></p>
+        </div>
       </div>
     </div>
   </div>

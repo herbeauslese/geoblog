@@ -516,19 +516,22 @@ a.nav-link:hover {
   margin: 24px 0;
 }
 
+/* Diagramm und Infofeld gestapelt statt nebeneinander — das Infofeld soll
+   die volle Content-Breite nutzen (Punkt 6), nicht in einer schmalen
+   Seitenspalte neben der Grafik stecken. */
 .positions-panel {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 16px;
 }
 
+/* Normale Card-Rahmen-Optik wie das Infobox-Panel, statt eines separaten,
+   schweren Rahmens — die Grafik trägt keinen eigenen dekorativen Rand
+   mehr (siehe lib/formation-diagram.js). */
 .positions-diagram {
-  flex: 1 1 420px;
-  min-width: 280px;
-  border: 3px solid var(--border-dark);
-  background: #fff;
-  padding: 8px;
+  border: 1px solid var(--border);
+  background: var(--doc-bg);
+  padding: 10px;
 }
 
 .positions-diagram svg {
@@ -538,44 +541,53 @@ a.nav-link:hover {
 }
 
 .positions-info {
-  flex: 1 1 220px;
-  max-width: 260px;
-  min-width: 200px;
   background: var(--sidebar-bg);
   border: 1px solid var(--border);
-  padding: 14px 16px;
-  min-height: 110px;
+  padding: 22px 26px;
+  min-height: 100px;
 }
 
 .positions-info-default {
   margin: 0;
   color: var(--text-muted);
-  font-size: 0.9em;
+  font-size: 0.95em;
+}
+
+.positions-info-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .positions-info-code {
+  flex: 0 0 auto;
   display: inline-block;
   font-weight: 700;
-  font-size: 0.72em;
+  font-size: 0.85em;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  background: var(--accent2);
   color: #fff;
-  padding: 2px 8px;
+  padding: 6px 14px;
   border: 1px solid var(--border-dark);
-  margin-bottom: 8px;
+}
+
+.positions-info-body {
+  flex: 1 1 260px;
+  min-width: 200px;
 }
 
 .positions-info-name {
   margin: 0 0 6px;
-  font-size: 1.05em;
+  font-size: 1.3em;
   color: var(--heading);
 }
 
 .positions-info-desc {
   margin: 0;
-  font-size: 0.9em;
-  line-height: 1.5;
+  font-size: 1em;
+  line-height: 1.6;
+  color: var(--text);
 }
 
 .position-dot {
@@ -583,28 +595,27 @@ a.nav-link:hover {
   outline: none;
 }
 
-.position-dot-visual {
-  transition: fill 0.15s ease;
+.position-dot-ring {
+  opacity: 0;
+  transition: opacity 0.15s ease;
 }
 
-.position-dot-label {
-  transition: fill 0.15s ease;
+.position-dot.is-active .position-dot-ring {
+  opacity: 1;
 }
 
-/* Auswahl-Zustand überschreibt Füllung/Rand unabhängig davon, ob der
-   Marker vorher gefüllt (Offense) oder hohl (Defense) war — beide Teams
-   werden im aktiven Zustand einheitlich in der Akzentfarbe dargestellt. */
-.position-dot.is-active .position-dot-visual {
-  fill: var(--accent2);
-  stroke: var(--border-dark);
-}
-
+/* Auswahl hebt den Marker per goldenem Ring + leichter Vergrößerung hervor,
+   statt die Füllung zu überschreiben — die Positionsfarbe bleibt darunter
+   sichtbar, sonst würde die Farbcodierung der neun Gruppen zerstört. */
+.position-dot.is-active .position-dot-visual,
 .position-dot.is-active .position-dot-label {
-  fill: var(--border-dark);
+  transform: scale(1.18);
+  transform-origin: center;
+  transform-box: fill-box;
 }
 
 .position-dot:focus-visible .position-dot-visual {
-  stroke: var(--accent2);
+  stroke: #c9962b;
   stroke-width: 2.5;
 }
 
@@ -722,14 +733,5 @@ footer p {
   .infobox {
     width: 100%;
     flex: 1 1 auto;
-  }
-
-  .positions-panel {
-    flex-direction: column;
-  }
-
-  .positions-info {
-    max-width: none;
-    width: 100%;
   }
 }
