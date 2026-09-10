@@ -2,33 +2,35 @@
   Baumknoten, Ebene 3. Bindet für jedes Kind nav-l4.html ein (keine
   Selbstrekursion, siehe nav-l4.html).
   Erwartet: include.kategorie_id, include.ahnen.
+  Eigene Variablennamen (l3_*) — siehe Kommentar in nav-l1.html zum
+  {% include %}-Scoping-Problem.
 {% endcomment %}
-{% assign fg = site.data.fachgebiete | where: "id", include.kategorie_id | first %}
-{% if fg %}
-  {% assign kinder = site.data.fachgebiete | where: "parent", fg.id %}
-  {% assign artikel = site.wiki | where: "uebergeordnet", fg.id | where_exp: "a", "a.ist_kategorie != true" | sort: "title" %}
-  {% assign fg_seite = site.wiki | where: "kategorie", fg.id | where: "ist_kategorie", true | first %}
-  {% assign hat_kinder = false %}
-  {% if kinder.size > 0 or artikel.size > 0 %}{% assign hat_kinder = true %}{% endif %}
-  {% assign offen = false %}
-  {% if include.ahnen contains fg.id %}{% assign offen = true %}{% endif %}
+{% assign l3_fg = site.data.fachgebiete | where: "id", include.kategorie_id | first %}
+{% if l3_fg %}
+  {% assign l3_kinder = site.data.fachgebiete | where: "parent", l3_fg.id %}
+  {% assign l3_artikel = site.wiki | where: "uebergeordnet", l3_fg.id | where_exp: "a", "a.ist_kategorie != true" | sort: "title" %}
+  {% assign l3_fg_seite = site.wiki | where: "kategorie", l3_fg.id | where: "ist_kategorie", true | first %}
+  {% assign l3_hat_kinder = false %}
+  {% if l3_kinder.size > 0 or l3_artikel.size > 0 %}{% assign l3_hat_kinder = true %}{% endif %}
+  {% assign l3_offen = false %}
+  {% if include.ahnen contains l3_fg.id %}{% assign l3_offen = true %}{% endif %}
   <li class="nav-item">
-    {% if hat_kinder %}
-      <details class="nav-details"{% if offen %} open{% endif %}>
+    {% if l3_hat_kinder %}
+      <details class="nav-details"{% if l3_offen %} open{% endif %}>
         <summary>
-          {% if fg_seite %}<a href="{{ fg_seite.url | relative_url }}" class="nav-link{% if page.url == fg_seite.url %} active{% endif %}">{{ fg.titel }}</a>{% else %}<span class="nav-link nav-link-plain">{{ fg.titel }}</span>{% endif %}
+          {% if l3_fg_seite %}<a href="{{ l3_fg_seite.url | relative_url }}" class="nav-link{% if page.url == l3_fg_seite.url %} active{% endif %}">{{ l3_fg.titel }}</a>{% else %}<span class="nav-link nav-link-plain">{{ l3_fg.titel }}</span>{% endif %}
         </summary>
         <ul>
-          {% for child in kinder %}
+          {% for child in l3_kinder %}
             {% include nav-l4.html kategorie_id=child.id ahnen=include.ahnen %}
           {% endfor %}
-          {% for p in artikel %}
+          {% for p in l3_artikel %}
             <li class="nav-item"><a href="{{ p.url | relative_url }}" class="nav-link nav-link-article{% if page.url == p.url %} active{% endif %}">{{ p.title }}</a></li>
           {% endfor %}
         </ul>
       </details>
     {% else %}
-      {% if fg_seite %}<a href="{{ fg_seite.url | relative_url }}" class="nav-link{% if page.url == fg_seite.url %} active{% endif %}">{{ fg.titel }}</a>{% else %}<span class="nav-link nav-link-plain">{{ fg.titel }}</span>{% endif %}
+      {% if l3_fg_seite %}<a href="{{ l3_fg_seite.url | relative_url }}" class="nav-link{% if page.url == l3_fg_seite.url %} active{% endif %}">{{ l3_fg.titel }}</a>{% else %}<span class="nav-link nav-link-plain">{{ l3_fg.titel }}</span>{% endif %}
     {% endif %}
   </li>
 {% endif %}
