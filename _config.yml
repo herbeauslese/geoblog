@@ -1,5 +1,5 @@
-title: Geo-Wiki
-description: "Ein wissenschaftliches Nachschlagewerk zur Geographie und angrenzenden Geowissenschaften — von den Grundlagen bis zu aktuellen Forschungsthemen."
+title: NFL-Wiki
+description: "Eine Wissensdatenbank rund um American Football (primär NFL) — von den Grundlagen bis zu Scheme-Tiefe: Formationen, Coverages, Route-Concepts und Situational Football."
 
 markdown: kramdown
 kramdown:
@@ -23,6 +23,7 @@ defaults:
       verwandte_themen: []
       quellen: []
       literatur: []
+      infobox: []
   - scope:
       path: ""
     values:

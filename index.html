@@ -3,6 +3,24 @@ layout: default
 title: Willkommen
 ---
 <div class="welcome">
-  <h2>Willkommen</h2>
-  <p>Diese Seite ist noch im Aufbau.</p>
+  <h2>Willkommen im NFL-Wiki</h2>
+  <p>
+    Diese Wissensdatenbank begleitet dich vom ersten Regelverständnis bis zur
+    echten Scheme-Tiefe: Personnel-Gruppierungen, Formationen,
+    Coverage-Konzepte, Route-Concepts, Blitz-Packages und Situational
+    Football rund um American Football (primär NFL).
+  </p>
+  <p>
+    Die Struktur wächst nach und nach. Wähle links ein Thema aus, sobald es
+    aktiv ist, oder starte mit den neuesten Einträgen:
+  </p>
+  <ul class="recent">
+    {% assign recent = site.wiki | sort: "date" | reverse | limit: 5 %}
+    {% for p in recent %}
+      <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+    {% endfor %}
+    {% if recent.size == 0 %}
+      <li class="empty">Noch keine veröffentlichten Artikel.</li>
+    {% endif %}
+  </ul>
 </div>

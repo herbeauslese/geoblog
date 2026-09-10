@@ -42,8 +42,22 @@ layout: default
   {% endif %}
 </div>
 
-<div class="post-content">
-  {{ content }}
+<div class="wiki-body">
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.infobox and page.infobox.size > 0 %}
+  <aside class="infobox">
+    <div class="infobox-title">{{ page.infobox_titel | default: page.title }}</div>
+    <dl>
+      {% for eintrag in page.infobox %}
+        <dt>{{ eintrag.label }}</dt>
+        <dd>{{ eintrag.value }}</dd>
+      {% endfor %}
+    </dl>
+  </aside>
+  {% endif %}
 </div>
 
 {% comment %} Unterartikel: alle veröffentlichten Seiten dieser Kategorie bzw. mit uebergeordnet == page.kategorie {% endcomment %}

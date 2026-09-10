@@ -1,0 +1,58 @@
+# Taxonomie des NFL-Wikis.
+#
+# Jede Kategorie besitzt eine eindeutige `id` (= Ordnername unter _wiki/,
+# = Wert des Front-Matter-Feldes `kategorie`). `parent: null` markiert eine
+# Ebene-1-Kategorie. Weitere Ebenen werden durch zusätzliche Einträge mit
+# gesetztem `parent` ergänzt — die Struktur ist beliebig tief erweiterbar,
+# ohne dass Layout, Sidebar oder Breadcrumbs angepasst werden müssen.
+#
+# Dies ist bewusst nur ein minimales Gerüst zur Demonstration (Defense >
+# Coverages > Cover 3). Die vollständige Themen-Taxonomie wird in einer
+# separaten Session mit dem Nutzer erarbeitet.
+
+- id: grundlagen
+  titel: "Grundlagen"
+  parent: null
+  kurzbeschreibung: >
+    Regeln, Positionen, Spielfeld und grundlegende Begriffe für den
+    Einstieg in American Football.
+
+- id: offense
+  titel: "Offense"
+  parent: null
+  kurzbeschreibung: >
+    Personnel-Gruppierungen, Formationen, Route-Concepts und
+    Passprotection.
+
+- id: defense
+  titel: "Defense"
+  parent: null
+  kurzbeschreibung: >
+    Fronts, Coverages und Blitz-Packages.
+
+- id: coverages
+  titel: "Coverages"
+  parent: defense
+  kurzbeschreibung: >
+    Zone- und Man-Coverage-Konzepte der Secondary.
+
+- id: special-teams
+  titel: "Special Teams"
+  parent: null
+  kurzbeschreibung: >
+    Kickoff, Punt, Field Goal und die jeweiligen Coverage- und
+    Return-Teams.
+
+- id: situational
+  titel: "Situational Football"
+  parent: null
+  kurzbeschreibung: >
+    Down & Distance, Two-Minute-Drill, Red Zone und andere
+    Spielsituationen.
+
+- id: glossar
+  titel: "Glossar"
+  parent: null
+  kurzbeschreibung: >
+    Alphabetisches Nachschlagewerk zentraler Fachbegriffe (Personnel-Codes,
+    Coverage-Namen etc.).
