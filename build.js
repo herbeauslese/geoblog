@@ -306,12 +306,25 @@ function renderInfobox(doc) {
 </aside>`;
 }
 
+// Registrierte Diagramm-Generatoren (lib/*-diagram.js). Ein Artikel wählt
+// per Front-Matter `figure.diagram: "field"` eines davon aus; build.js
+// bettet das zurückgegebene SVG-Markup direkt in die Seite ein (kein
+// <img> auf eine separate Bilddatei) — nur so lassen sich später
+// Spieler-Positionen/Play-Diagramme mit eigenen Koordinaten auf demselben
+// Feld-Unterbau überlagern.
+const DIAGRAM_BUILDERS = {
+  field: buildFieldDiagramSvg,
+};
+
 function renderFigure(doc) {
   if (!doc.figure) return "";
-  const { src, alt = "", caption = "" } = doc.figure;
+  const { diagram, src, alt = "", caption = "" } = doc.figure;
+  const media = diagram && DIAGRAM_BUILDERS[diagram]
+    ? `<div class="wiki-figure-svg" role="img" aria-label="${escapeHtml(alt)}">${DIAGRAM_BUILDERS[diagram]()}</div>`
+    : `<img src="${url(src)}" alt="${escapeHtml(alt)}">`;
   return `
 <figure class="wiki-figure">
-  <img src="${url(src)}" alt="${escapeHtml(alt)}">
+  ${media}
   ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
 </figure>`;
 }
@@ -469,10 +482,6 @@ function build() {
   }
 
   copyDir(ASSETS_DIR, path.join(OUT_DIR, "assets"));
-
-  // Generierte Diagramme (datengetrieben aus lib/*-diagram.js, siehe dort)
-  // landen wie statische Assets unter assets/images/.
-  writeFile("assets/images/field-diagram.svg", buildFieldDiagramSvg());
 
   console.log(`Gebaut: ${published.length} veröffentlichte Wiki-Seiten + Startseite -> ${path.relative(ROOT, OUT_DIR)}/`);
 }

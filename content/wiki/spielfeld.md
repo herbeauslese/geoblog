@@ -7,7 +7,7 @@ kurzbeschreibung: "Spielfeldmaße und -markierungen im Überblick."
 status: fertig
 published: true
 figure:
-  src: "/assets/images/field-diagram.svg"
+  diagram: "field"
   alt: "Maßzeichnung eines NFL-Spielfelds von oben, mit Endzonen, Yard-Linien und Hash Marks"
   caption: "Abbildung 1: Maße eines NFL-Spielfelds"
 ---
