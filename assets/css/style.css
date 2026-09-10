@@ -37,14 +37,23 @@ body {
   margin: 0;
   padding: 24px 0;
   background-color: var(--page-bg);
-  /* Dezentes Retro-Bowl-Gimmick: pixelige Stadion-/Feld-Grafik als reine
-     Atmosphäre im äußeren Seitenhintergrund — bewusst stark gedämpft (die
-     PNG-Deckkraft ist schon beim Erzeugen auf ~40% reduziert) und nahtlos
-     kachelbar, damit sie hinter/um Header, Sidebar und Content-Box sichtbar
-     bleibt, ohne mit dem Lesebereich um Aufmerksamkeit zu konkurrieren.
-     image-rendering: pixelated hält die Pixel beim Kacheln scharf. */
-  background-image: url("../images/bg-stadium.png");
-  background-repeat: repeat;
+  /* Dezentes Retro-Bowl-Gimmick: eine einzelne, nicht gekachelte Pixel-Art-
+     Stadionszene (Fluchtpunkt-Feld, Ränge, Flutlichter, Spieler-Sprites) als
+     reine Atmosphäre im äußeren Seitenhintergrund. Der Verlauf in
+     --accent-dark-Ton liegt als zweite Hintergrund-Ebene darüber und dimmt
+     die Szene deutlich ab, damit sie hinter/um Header, Sidebar und
+     Content-Box wirkt, ohne mit dem Lesebereich zu konkurrieren — die PNG
+     selbst bleibt dabei unangetastet kontrastreich (schärfere Pixelkanten).
+     background-attachment: fixed + cover verhindert ein sichtbares
+     Kachel-Raster unabhängig von der Seitenhöhe. image-rendering: pixelated
+     hält die Pixel beim Hochskalieren hart statt weichgezeichnet. */
+  background-image:
+    linear-gradient(rgba(31, 76, 43, 0.78), rgba(31, 76, 43, 0.78)),
+    url("../images/bg-stadium.png");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-attachment: fixed, fixed;
   image-rendering: pixelated;
   font-family: var(--font-sans);
   color: var(--text);
