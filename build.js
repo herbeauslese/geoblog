@@ -95,8 +95,10 @@ const docs = wikiFiles.map((filename) => {
 
 const published = docs.filter((d) => d.published);
 const docsByKategorieAsPage = new Map(); // kategorie id -> category-page doc
+const docsByTitle = new Map(); // title (kleingeschrieben) -> doc, für "Verwandte Themen"-Verlinkung
 for (const d of published) {
   if (d.ist_kategorie) docsByKategorieAsPage.set(d.kategorie, d);
+  docsByTitle.set(d.title.toLowerCase(), d);
 }
 const articlesByParent = new Map(); // uebergeordnet id -> [doc,...] (nur echte Artikel, keine Kategorieseiten)
 for (const d of published) {
@@ -366,9 +368,17 @@ function renderChildrenSections(doc) {
 }
 
 function renderRelated(doc) {
+  // Einträge, die auf einen existierenden Artikeltitel passen, werden zu
+  // echten Querverweisen; alles andere bleibt Klartext (z.B. Begriffe, zu
+  // denen noch kein eigener Artikel existiert).
   const items =
     doc.verwandte_themen && doc.verwandte_themen.length
-      ? `<ul>${doc.verwandte_themen.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>`
+      ? `<ul>${doc.verwandte_themen
+          .map((r) => {
+            const match = docsByTitle.get(r.toLowerCase());
+            return `<li>${match ? `<a href="${url(match.url)}">${escapeHtml(r)}</a>` : escapeHtml(r)}</li>`;
+          })
+          .join("")}</ul>`
       : `<p class="empty">Noch keine verwandten Themen hinterlegt.</p>`;
   return `
 <div class="wiki-related">
