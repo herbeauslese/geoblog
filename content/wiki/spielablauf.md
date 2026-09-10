@@ -2,6 +2,7 @@
 title: "Spielablauf (Downs, Scoring, Penalties)"
 kategorie: grundlagen
 uebergeordnet: grundlagen
+order: 3
 kurzbeschreibung: "Downs, Scoring-Arten und Strafen im Grundablauf eines Spiels."
 status: stub
 published: true

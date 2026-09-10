@@ -56,6 +56,7 @@ const ARTICLE_DEFAULTS = {
   status: "stub",
   schwierigkeit: "grundlagen",
   published: false,
+  order: null, // optionale manuelle Reihenfolge innerhalb der Kategorie (kleinste Zahl zuerst); ohne Angabe: alphabetisch
 };
 
 function loadYaml(filename) {
@@ -102,7 +103,12 @@ for (const d of published) {
   articlesByParent.get(d.uebergeordnet).push(d);
 }
 for (const list of articlesByParent.values()) {
-  list.sort((a, b) => a.title.localeCompare(b.title, "de"));
+  list.sort((a, b) => {
+    if (a.order != null && b.order != null) return a.order - b.order;
+    if (a.order != null) return -1;
+    if (b.order != null) return 1;
+    return a.title.localeCompare(b.title, "de");
+  });
 }
 
 // ---------- Helfer: Kategoriebaum ----------

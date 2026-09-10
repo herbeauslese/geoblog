@@ -2,6 +2,7 @@
 title: "Positionen"
 kategorie: grundlagen
 uebergeordnet: grundlagen
+order: 5
 kurzbeschreibung: "Die Positionen auf Offense, Defense und Special Teams im Überblick."
 status: stub
 published: true
