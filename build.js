@@ -16,7 +16,7 @@ const yaml = require("js-yaml");
 const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
 const { buildFieldDiagramSvg } = require("./lib/field-diagram");
-const { buildOffenseFormationSvg, buildDefenseFormationSvg } = require("./lib/formation-diagram");
+const { buildCombinedFormationSvg } = require("./lib/formation-diagram");
 
 const ROOT = __dirname;
 const CONTENT_DIR = path.join(ROOT, "content");
@@ -336,35 +336,24 @@ function renderFigure(doc) {
 }
 
 // Interaktive Widgets: analog zu DIAGRAM_BUILDERS, aber für ganze
-// Content-Blöcke (Tabs + Diagramme + Infofeld), nicht nur eine einzelne
-// Abbildung. Ein Artikel aktiviert eines davon per Front-Matter
-// `interactive: "<name>"`; das zugehörige Client-JS wird separat über
-// `scripts` eingebunden, damit Seiten ohne Interaktivität keine unnötige
-// JS-Abhängigkeit bekommen.
-function renderPositionsPanel(id, label, svg, isDefault) {
-  return `
-<div class="positions-panel" data-panel="${id}"${isDefault ? "" : " hidden"}>
-  <div class="positions-diagram" role="img" aria-label="Formations-Diagramm ${escapeHtml(label)}">${svg}</div>
-  <div class="positions-info">
-    <p class="positions-info-default">Auf eine Position tippen/hovern für Details.</p>
-    <div class="positions-info-detail" hidden>
-      <div class="positions-info-code"></div>
-      <h4 class="positions-info-name"></h4>
-      <p class="positions-info-desc"></p>
-    </div>
-  </div>
-</div>`;
-}
-
+// Content-Blöcke (Diagramm + Infofeld), nicht nur eine einzelne Abbildung.
+// Ein Artikel aktiviert eines davon per Front-Matter `interactive: "<name>"`;
+// das zugehörige Client-JS wird separat über `scripts` eingebunden, damit
+// Seiten ohne Interaktivität keine unnötige JS-Abhängigkeit bekommen.
 function renderPositionsWidget() {
   return `
 <div class="positions-widget">
-  <div class="positions-tabs" role="tablist">
-    <button type="button" class="positions-tab active" role="tab" aria-selected="true" data-target="offense">Offense</button>
-    <button type="button" class="positions-tab" role="tab" aria-selected="false" data-target="defense">Defense</button>
+  <div class="positions-panel">
+    <div class="positions-diagram" role="img" aria-label="Formations-Diagramm Offense und Defense">${buildCombinedFormationSvg()}</div>
+    <div class="positions-info">
+      <p class="positions-info-default">Auf eine Position tippen/hovern für Details.</p>
+      <div class="positions-info-detail" hidden>
+        <div class="positions-info-code"></div>
+        <h4 class="positions-info-name"></h4>
+        <p class="positions-info-desc"></p>
+      </div>
+    </div>
   </div>
-  ${renderPositionsPanel("offense", "Offense", buildOffenseFormationSvg(), true)}
-  ${renderPositionsPanel("defense", "Defense", buildDefenseFormationSvg(), false)}
 </div>`;
 }
 
