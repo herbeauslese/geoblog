@@ -37,6 +37,15 @@ body {
   margin: 0;
   padding: 24px 0;
   background-color: var(--page-bg);
+  /* Dezentes Retro-Bowl-Gimmick: pixelige Stadion-/Feld-Grafik als reine
+     Atmosphäre im äußeren Seitenhintergrund — bewusst stark gedämpft (die
+     PNG-Deckkraft ist schon beim Erzeugen auf ~40% reduziert) und nahtlos
+     kachelbar, damit sie hinter/um Header, Sidebar und Content-Box sichtbar
+     bleibt, ohne mit dem Lesebereich um Aufmerksamkeit zu konkurrieren.
+     image-rendering: pixelated hält die Pixel beim Kacheln scharf. */
+  background-image: url("../images/bg-stadium.png");
+  background-repeat: repeat;
+  image-rendering: pixelated;
   font-family: var(--font-sans);
   color: var(--text);
 }
@@ -52,7 +61,10 @@ body {
   max-width: 1100px;
   min-width: 320px;
   margin: 0 auto;
-  background: var(--page-bg);
+  /* Transparent statt page-bg: die Stadion-Hintergrundgrafik von body soll
+     auch in den Abständen zwischen Header/Sidebar/Content-Box durchscheinen,
+     nicht nur außerhalb des Wrappers. */
+  background: transparent;
   border: 3px solid var(--border-dark);
   border-radius: 0;
   padding: 10px;

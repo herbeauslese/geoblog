@@ -82,7 +82,11 @@ const docs = wikiFiles.map((filename) => {
   const raw = fs.readFileSync(path.join(WIKI_DIR, filename), "utf8");
   const { data, content } = matter(raw);
   const doc = { ...ARTICLE_DEFAULTS, ...data, slug, url: `/wiki/${slug}/` };
-  doc.bodyHtml = md.render(content);
+  // Artikeltexte verlinken andere Wiki-Seiten mit seitenwurzel-relativen
+  // Pfaden (z.B. "/wiki/gaps/"). Damit die auch unter dem GitHub-Pages-
+  // Projektpfad funktionieren, bekommen sie hier nachträglich denselben
+  // BASE_URL-Präfix wie alle Template-generierten Links (siehe url()).
+  doc.bodyHtml = md.render(content).replace(/href="\/(?!\/)/g, `href="${BASE_URL}/`);
   return doc;
 });
 
