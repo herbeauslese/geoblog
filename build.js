@@ -16,6 +16,7 @@ const yaml = require("js-yaml");
 const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
 const { buildFieldDiagramSvg } = require("./lib/field-diagram");
+const { buildOffenseFormationSvg, buildDefenseFormationSvg } = require("./lib/formation-diagram");
 
 const ROOT = __dirname;
 const CONTENT_DIR = path.join(ROOT, "content");
@@ -59,6 +60,8 @@ const ARTICLE_DEFAULTS = {
   published: false,
   order: null, // optionale manuelle Reihenfolge innerhalb der Kategorie (kleinste Zahl zuerst); ohne Angabe: alphabetisch
   figure: null, // optional: { src, alt, caption } für eine Abbildung unterhalb des Artikeltexts
+  interactive: null, // optional: Name eines registrierten interaktiven Widgets (siehe INTERACTIVE_WIDGETS)
+  scripts: [], // optionale zusätzliche <script>-Pfade, nur für Seiten, die sie brauchen
 };
 
 function loadYaml(filename) {
@@ -221,7 +224,7 @@ function renderFooter() {
 </footer>`;
 }
 
-function renderPage({ title, contentPaneHtml, activeUrl, ahnenIds }) {
+function renderPage({ title, contentPaneHtml, activeUrl, ahnenIds, scripts = [] }) {
   const pageTitle = title ? `${title} · ${SITE.title}` : SITE.title;
   return `<!doctype html>
 <html lang="de">
@@ -254,6 +257,7 @@ function renderPage({ title, contentPaneHtml, activeUrl, ahnenIds }) {
 
 <script src="${url("/assets/js/nav.js")}"></script>
 <script src="${url("/assets/js/search.js")}"></script>
+${scripts.map((s) => `<script src="${url(s)}"></script>`).join("\n")}
 </body>
 </html>
 `;
@@ -329,6 +333,48 @@ function renderFigure(doc) {
   ${media}
   ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
 </figure>`;
+}
+
+// Interaktive Widgets: analog zu DIAGRAM_BUILDERS, aber für ganze
+// Content-Blöcke (Tabs + Diagramme + Infofeld), nicht nur eine einzelne
+// Abbildung. Ein Artikel aktiviert eines davon per Front-Matter
+// `interactive: "<name>"`; das zugehörige Client-JS wird separat über
+// `scripts` eingebunden, damit Seiten ohne Interaktivität keine unnötige
+// JS-Abhängigkeit bekommen.
+function renderPositionsPanel(id, label, svg, isDefault) {
+  return `
+<div class="positions-panel" data-panel="${id}"${isDefault ? "" : " hidden"}>
+  <div class="positions-diagram" role="img" aria-label="Formations-Diagramm ${escapeHtml(label)}">${svg}</div>
+  <div class="positions-info">
+    <p class="positions-info-default">Auf eine Position tippen/hovern für Details.</p>
+    <div class="positions-info-detail" hidden>
+      <div class="positions-info-code"></div>
+      <h4 class="positions-info-name"></h4>
+      <p class="positions-info-desc"></p>
+    </div>
+  </div>
+</div>`;
+}
+
+function renderPositionsWidget() {
+  return `
+<div class="positions-widget">
+  <div class="positions-tabs" role="tablist">
+    <button type="button" class="positions-tab active" role="tab" aria-selected="true" data-target="offense">Offense</button>
+    <button type="button" class="positions-tab" role="tab" aria-selected="false" data-target="defense">Defense</button>
+  </div>
+  ${renderPositionsPanel("offense", "Offense", buildOffenseFormationSvg(), true)}
+  ${renderPositionsPanel("defense", "Defense", buildDefenseFormationSvg(), false)}
+</div>`;
+}
+
+const INTERACTIVE_WIDGETS = {
+  positions: renderPositionsWidget,
+};
+
+function renderInteractiveWidget(doc) {
+  if (!doc.interactive || !INTERACTIVE_WIDGETS[doc.interactive]) return "";
+  return INTERACTIVE_WIDGETS[doc.interactive]();
 }
 
 function renderChildrenSections(doc) {
@@ -417,6 +463,7 @@ ${renderMeta(doc)}
 </div>
 
 ${renderFigure(doc)}
+${renderInteractiveWidget(doc)}
 ${renderChildrenSections(doc)}
 ${renderRelated(doc)}
 ${renderPrevNext(doc)}`;
@@ -426,6 +473,7 @@ ${renderPrevNext(doc)}`;
     contentPaneHtml: body,
     activeUrl: doc.url,
     ahnenIds,
+    scripts: doc.scripts,
   });
 }
 

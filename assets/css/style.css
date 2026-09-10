@@ -510,6 +510,132 @@ a.nav-link:hover {
   margin-left: auto;
 }
 
+/* ---------- Positionen-Widget (erstes interaktives Element) ---------- */
+
+.positions-widget {
+  margin: 24px 0;
+}
+
+.positions-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.positions-tab {
+  font-family: var(--font-sans);
+  font-size: 0.9em;
+  font-weight: 700;
+  padding: 8px 20px;
+  background: var(--sidebar-bg);
+  border: 2px solid var(--border-dark);
+  border-radius: 2px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.positions-tab:hover {
+  background: var(--accent-bg);
+}
+
+.positions-tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: inset 1px 1px 0 var(--bevel-light), inset -2px -2px 0 var(--bevel-dark);
+}
+
+.positions-tab:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 2px;
+}
+
+.positions-panel {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* display:flex oben gewinnt sonst gegen die UA-Regel für [hidden] (gleiche
+   Spezifität, aber Autor-CSS schlägt User-Agent-Stylesheet) — ohne das hier
+   blieben beide Panels dauerhaft sichtbar, unabhängig vom hidden-Attribut. */
+.positions-panel[hidden] {
+  display: none;
+}
+
+.positions-diagram {
+  flex: 1 1 420px;
+  min-width: 280px;
+  border: 3px solid var(--border-dark);
+  background: #fff;
+  padding: 8px;
+}
+
+.positions-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.positions-info {
+  flex: 1 1 220px;
+  max-width: 260px;
+  min-width: 200px;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border);
+  padding: 14px 16px;
+  min-height: 110px;
+}
+
+.positions-info-default {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+.positions-info-code {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.72em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: var(--accent2);
+  color: #fff;
+  padding: 2px 8px;
+  border: 1px solid var(--border-dark);
+  margin-bottom: 8px;
+}
+
+.positions-info-name {
+  margin: 0 0 6px;
+  font-size: 1.05em;
+  color: var(--heading);
+}
+
+.positions-info-desc {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.position-dot {
+  cursor: pointer;
+  outline: none;
+}
+
+.position-dot-visual {
+  transition: fill 0.15s ease;
+}
+
+.position-dot.is-active .position-dot-visual {
+  fill: var(--accent2);
+}
+
+.position-dot:focus-visible .position-dot-visual {
+  stroke: var(--accent2);
+  stroke-width: 2.5;
+}
+
 /* ---------- Artikelkörper + Infobox ---------- */
 
 .wiki-body {
@@ -624,5 +750,14 @@ footer p {
   .infobox {
     width: 100%;
     flex: 1 1 auto;
+  }
+
+  .positions-panel {
+    flex-direction: column;
+  }
+
+  .positions-info {
+    max-width: none;
+    width: 100%;
   }
 }
