@@ -456,6 +456,29 @@ a.nav-link:hover {
   color: #fff;
 }
 
+/* Abbildungen (z.B. generierte Diagramme): sachlich, wie eine Grafik aus
+   einer wissenschaftlichen Arbeit — dünner Rahmen, gedeckte Unterschrift,
+   keine Retro-/Bevel-Optik. */
+.wiki-figure {
+  margin: 24px 0;
+  padding: 0;
+}
+
+.wiki-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+.wiki-figure figcaption {
+  margin-top: 8px;
+  font-size: 0.82em;
+  color: var(--text-muted);
+  text-align: center;
+}
+
 .wiki-prevnext {
   display: flex;
   justify-content: space-between;

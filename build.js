@@ -15,6 +15,7 @@ const path = require("path");
 const yaml = require("js-yaml");
 const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
+const { buildFieldDiagramSvg } = require("./lib/field-diagram");
 
 const ROOT = __dirname;
 const CONTENT_DIR = path.join(ROOT, "content");
@@ -57,6 +58,7 @@ const ARTICLE_DEFAULTS = {
   schwierigkeit: "grundlagen",
   published: false,
   order: null, // optionale manuelle Reihenfolge innerhalb der Kategorie (kleinste Zahl zuerst); ohne Angabe: alphabetisch
+  figure: null, // optional: { src, alt, caption } für eine Abbildung unterhalb des Artikeltexts
 };
 
 function loadYaml(filename) {
@@ -304,6 +306,16 @@ function renderInfobox(doc) {
 </aside>`;
 }
 
+function renderFigure(doc) {
+  if (!doc.figure) return "";
+  const { src, alt = "", caption = "" } = doc.figure;
+  return `
+<figure class="wiki-figure">
+  <img src="${url(src)}" alt="${escapeHtml(alt)}">
+  ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
+</figure>`;
+}
+
 function renderChildrenSections(doc) {
   let html = "";
   if (doc.ist_kategorie) {
@@ -381,6 +393,7 @@ ${renderMeta(doc)}
   ${renderInfobox(doc)}
 </div>
 
+${renderFigure(doc)}
 ${renderChildrenSections(doc)}
 ${renderRelated(doc)}
 ${renderPrevNext(doc)}`;
@@ -456,6 +469,10 @@ function build() {
   }
 
   copyDir(ASSETS_DIR, path.join(OUT_DIR, "assets"));
+
+  // Generierte Diagramme (datengetrieben aus lib/*-diagram.js, siehe dort)
+  // landen wie statische Assets unter assets/images/.
+  writeFile("assets/images/field-diagram.svg", buildFieldDiagramSvg());
 
   console.log(`Gebaut: ${published.length} veröffentlichte Wiki-Seiten + Startseite -> ${path.relative(ROOT, OUT_DIR)}/`);
 }
