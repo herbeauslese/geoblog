@@ -1,7 +1,7 @@
 ---
 title: "Cover 2"
-kategorie: coverages
-uebergeordnet: coverages
+kategorie: zone-coverages
+uebergeordnet: zone-coverages
 tags: ["Zone Coverage", "2 Deep"]
 schwierigkeit: fortgeschritten
 status: stub

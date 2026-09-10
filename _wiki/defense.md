@@ -3,15 +3,9 @@ title: "Defense"
 kategorie: defense
 ist_kategorie: true
 uebergeordnet: null
-tags: []
-schwierigkeit: grundlagen
-status: stub
-kurzbeschreibung: "Fronts, Coverages und Blitz-Packages."
-verwandte_themen: []
-quellen: []
-literatur: []
+kurzbeschreibung: "Coverages, Fronten, Run-Fits und Blitz-Packages."
 published: true
 ---
-Fronts, Coverages und Blitz-Packages.
+Coverages, Fronten, Run-Fits und Blitz-Packages.
 
 _Dieser Kategorie-Artikel ist ein Platzhalter. Inhalte folgen._

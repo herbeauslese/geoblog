@@ -5,54 +5,83 @@
 # Ebene-1-Kategorie. Weitere Ebenen werden durch zusätzliche Einträge mit
 # gesetztem `parent` ergänzt — die Struktur ist beliebig tief erweiterbar,
 # ohne dass Layout, Sidebar oder Breadcrumbs angepasst werden müssen.
-#
-# Dies ist bewusst nur ein minimales Gerüst zur Demonstration (Defense >
-# Coverages > Cover 3). Die vollständige Themen-Taxonomie wird in einer
-# separaten Session mit dem Nutzer erarbeitet.
 
 - id: grundlagen
   titel: "Grundlagen"
   parent: null
-  kurzbeschreibung: >
-    Regeln, Positionen, Spielfeld und grundlegende Begriffe für den
-    Einstieg in American Football.
+  kurzbeschreibung: "Regeln, Positionen und grundlegende Begriffe für den Einstieg in American Football."
+
+- id: personnel-formationen
+  titel: "Personnel & Formationen"
+  parent: null
+  kurzbeschreibung: "Personnel-Gruppierungen und Formationen auf Offense und Defense."
 
 - id: offense
   titel: "Offense"
   parent: null
-  kurzbeschreibung: >
-    Personnel-Gruppierungen, Formationen, Route-Concepts und
-    Passprotection.
+  kurzbeschreibung: "Run-Concepts, Pass-Protection, Route-Concepts, Screens & RPOs."
+
+- id: run-concepts
+  titel: "Run-Concepts"
+  parent: offense
+  kurzbeschreibung: "Zone-Schemes, Gap-Schemes und weitere Run-Concepts."
+
+- id: zone-schemes
+  titel: "Zone-Schemes"
+  parent: run-concepts
+  kurzbeschreibung: "Laufkonzepte auf Zone-Blocking-Basis."
+
+- id: gap-schemes
+  titel: "Gap-Schemes"
+  parent: run-concepts
+  kurzbeschreibung: "Laufkonzepte auf Gap-/Man-Blocking-Basis mit Pulls."
+
+- id: sonstige-run-concepts
+  titel: "Sonstige Run-Concepts"
+  parent: run-concepts
+  kurzbeschreibung: "Weitere Laufkonzepte außerhalb klassischer Zone-/Gap-Schemes."
+
+- id: pass-protection
+  titel: "Pass-Protection"
+  parent: offense
+  kurzbeschreibung: "Schutzkonzepte der Offensive Line und Backs gegen den Pass-Rush."
+
+- id: route-concepts
+  titel: "Route-Concepts"
+  parent: offense
+  kurzbeschreibung: "Kombinierte Route-Concepts im Passspiel."
 
 - id: defense
   titel: "Defense"
   parent: null
-  kurzbeschreibung: >
-    Fronts, Coverages und Blitz-Packages.
+  kurzbeschreibung: "Coverages, Fronten, Run-Fits und Blitz-Packages."
 
-- id: coverages
-  titel: "Coverages"
+- id: zone-coverages
+  titel: "Zone-Coverages"
   parent: defense
-  kurzbeschreibung: >
-    Zone- und Man-Coverage-Konzepte der Secondary.
+  kurzbeschreibung: "Coverages, bei denen Defender feste Zonen statt Gegenspieler decken."
+
+- id: match-man-coverages
+  titel: "Match- & Man-Coverages"
+  parent: defense
+  kurzbeschreibung: "Man-basierte und pattern-matchende Coverage-Konzepte."
+
+- id: blitz-packages
+  titel: "Blitz-Packages"
+  parent: defense
+  kurzbeschreibung: "Pressure-Konzepte jenseits des reinen Vier-Mann-Rushs."
 
 - id: special-teams
   titel: "Special Teams"
   parent: null
-  kurzbeschreibung: >
-    Kickoff, Punt, Field Goal und die jeweiligen Coverage- und
-    Return-Teams.
+  kurzbeschreibung: "Kickoff, Punt, Field Goal und die zugehörigen Rollen."
 
 - id: situational
   titel: "Situational Football"
   parent: null
-  kurzbeschreibung: >
-    Down & Distance, Two-Minute-Drill, Red Zone und andere
-    Spielsituationen.
+  kurzbeschreibung: "Down & Distance, Red Zone, Two-Minute-Drill und Game-Script."
 
 - id: glossar
   titel: "Glossar"
   parent: null
-  kurzbeschreibung: >
-    Alphabetisches Nachschlagewerk zentraler Fachbegriffe (Personnel-Codes,
-    Coverage-Namen etc.).
+  kurzbeschreibung: "Alphabetisches Nachschlagewerk zentraler Fachbegriffe (Personnel-Codes, Coverage-Namen etc.), aus allen Artikeln heraus verlinkt."

@@ -1,7 +1,7 @@
 ---
 title: "Cover 3"
-kategorie: coverages
-uebergeordnet: coverages
+kategorie: zone-coverages
+uebergeordnet: zone-coverages
 tags: ["Zone Coverage", "3 Deep", "Secondary"]
 schwierigkeit: fortgeschritten
 status: fertig
