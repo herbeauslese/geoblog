@@ -37,24 +37,16 @@ body {
   margin: 0;
   padding: 24px 0;
   background-color: var(--page-bg);
-  /* Dezentes Retro-Bowl-Gimmick: eine einzelne, nicht gekachelte Pixel-Art-
-     Stadionszene (Fluchtpunkt-Feld, Ränge, Flutlichter, Spieler-Sprites) als
-     reine Atmosphäre im äußeren Seitenhintergrund. Der Verlauf in
-     --accent-dark-Ton liegt als zweite Hintergrund-Ebene darüber und dimmt
-     die Szene deutlich ab, damit sie hinter/um Header, Sidebar und
-     Content-Box wirkt, ohne mit dem Lesebereich zu konkurrieren — die PNG
-     selbst bleibt dabei unangetastet kontrastreich (schärfere Pixelkanten).
-     background-attachment: fixed + cover verhindert ein sichtbares
-     Kachel-Raster unabhängig von der Seitenhöhe. image-rendering: pixelated
-     hält die Pixel beim Hochskalieren hart statt weichgezeichnet. */
+  /* Dezentes Retro-Bowl-Gimmick, rein per CSS-Gradient statt Bild-Asset
+     (bewusste Entscheidung nach zwei fehlgeschlagenen Illustrations-
+     Versuchen — ein Gradient kann nicht "kaputtgehen"): klassische
+     Rasen-Mähstreifen plus dünne Yard-Linien, beides stark abgedunkelt
+     (oberste Ebene ist ein deckender Grün-Ton), damit es reine Atmosphäre
+     hinter/um Header, Sidebar und Content-Box bleibt. */
   background-image:
-    linear-gradient(rgba(31, 76, 43, 0.78), rgba(31, 76, 43, 0.78)),
-    url("../images/bg-stadium.png");
-  background-size: cover, cover;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
-  background-attachment: fixed, fixed;
-  image-rendering: pixelated;
+    linear-gradient(rgba(20, 40, 26, 0.88), rgba(20, 40, 26, 0.88)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 2px, transparent 2px 160px),
+    repeating-linear-gradient(90deg, #3f7a4c 0 80px, #356a41 80px 160px);
   font-family: var(--font-sans);
   color: var(--text);
 }
