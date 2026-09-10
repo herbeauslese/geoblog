@@ -341,10 +341,17 @@ function renderFigure(doc) {
 // das zugehörige Client-JS wird separat über `scripts` eingebunden, damit
 // Seiten ohne Interaktivität keine unnötige JS-Abhängigkeit bekommen.
 function renderPositionsWidget() {
+  // Die Beschreibungen im Diagramm (data-desc-Attribute, siehe
+  // lib/formation-diagram.js) enthalten seitenwurzel-relative Glossar-Links
+  // wie bei normalem Artikeltext. Da sie als HTML-Attributwert bereits
+  // escaped sind (" -> &quot;), greift die Ersetzung für doc.bodyHtml hier
+  // nicht direkt — derselbe BASE_URL-Präfix wird deshalb auf die escapte
+  // Form angewendet.
+  const svg = buildCombinedFormationSvg().replace(/href=&quot;\/(?!\/)/g, `href=&quot;${BASE_URL}/`);
   return `
 <div class="positions-widget">
   <div class="positions-panel">
-    <div class="positions-diagram" role="img" aria-label="Formations-Diagramm Offense und Defense">${buildCombinedFormationSvg()}</div>
+    <div class="positions-diagram" role="img" aria-label="Formations-Diagramm Offense und Defense">${svg}</div>
     <div class="positions-info">
       <p class="positions-info-default">Auf eine Position tippen/hovern für Details.</p>
       <div class="positions-info-detail" hidden>

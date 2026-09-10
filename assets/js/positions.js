@@ -42,7 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
     codeEl.textContent = dot.dataset.code;
     codeEl.style.background = dot.dataset.color;
     nameEl.textContent = dot.dataset.name;
-    descEl.textContent = dot.dataset.desc;
+    // innerHTML statt textContent: die Beschreibungen enthalten bewusst
+    // echte Links auf Glossar-Einträge (siehe lib/formation-diagram.js).
+    descEl.innerHTML = dot.dataset.desc;
     infoDefault.hidden = true;
     infoDetail.hidden = false;
   }
