@@ -17,6 +17,7 @@ const matter = require("gray-matter");
 const MarkdownIt = require("markdown-it");
 const { buildFieldDiagramSvg } = require("./lib/field-diagram");
 const { buildCombinedFormationSvg } = require("./lib/formation-diagram");
+const { buildCounterDiagramSvg } = require("./lib/play-diagram");
 
 const ROOT = __dirname;
 const CONTENT_DIR = path.join(ROOT, "content");
@@ -320,6 +321,7 @@ function renderInfobox(doc) {
 // Feld-Unterbau überlagern.
 const DIAGRAM_BUILDERS = {
   field: buildFieldDiagramSvg,
+  counter: buildCounterDiagramSvg,
 };
 
 function renderFigure(doc) {
